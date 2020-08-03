@@ -13,7 +13,10 @@ import org.supercsv.io.CsvBeanReader;
 import org.supercsv.io.ICsvBeanReader;
 import org.supercsv.prefs.CsvPreference;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileReader;
+import java.io.InputStreamReader;
 
 public class UseCsvReader {
 
@@ -50,6 +53,37 @@ public class UseCsvReader {
             while((customer = beanReader.read(CustomerBean.class, header, processors)) != null){
                 System.out.println(String.format("lineNo=%s, rowNo=%s, customer=%s",
                         beanReader.getLineNumber(), beanReader.getRowNumber(), customer));
+            }
+        }finally{
+            if(beanReader != null)beanReader.close();
+        }
+    }
+
+    private static CellProcessor[] getPojoInfoProcessors(){
+        final CellProcessor[] processors = new CellProcessor[]{
+                new NotNull(),//字段名
+                new NotNull(),//字段类型
+                new Optional(),//是否为空
+                new NotNull(),//备注说明
+        };
+
+        return processors;
+    }
+
+    public static void readPojoInfoWithCsvBeanReader() throws Exception {
+        ICsvBeanReader beanReader = null;
+        try{
+            beanReader = new CsvBeanReader(new FileReader("D:\\log\\v_port_plate_test.csv"),
+                    CsvPreference.EXCEL_PREFERENCE);
+
+            // the header elements are used to map the values to the bean (names must match)
+            final String[] header = beanReader.getHeader(true);
+            final CellProcessor[] processors = getPojoInfoProcessors();
+
+            PojoInfoBean pojoInfo;
+            while((pojoInfo = beanReader.read(PojoInfoBean.class, header, processors)) != null){
+                System.out.println(String.format("lineNo=%s, rowNo=%s, customer=%s",
+                        beanReader.getLineNumber(), beanReader.getRowNumber(), pojoInfo));
             }
         }finally{
             if(beanReader != null)beanReader.close();

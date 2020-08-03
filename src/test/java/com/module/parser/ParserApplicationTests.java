@@ -97,4 +97,11 @@ class ParserApplicationTests {
         }catch (Exception e){e.printStackTrace();}
     }
 
+    @Test
+    void testPojoInfoReader(){
+        try{
+            UseCsvReader.readPojoInfoWithCsvBeanReader();
+        } catch (Exception e){e.printStackTrace();}
+    }
+
 }
