@@ -11,7 +11,7 @@ public class JiBxParser {
     public JiBxParser() {
         bindGen = new BindingGenerator();
 //        bindGen.main();
-
+        
     }
 
 }

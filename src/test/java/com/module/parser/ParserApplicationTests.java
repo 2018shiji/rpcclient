@@ -1,6 +1,8 @@
 package com.module.parser;
 
 
+import com.module.parser.csv.UseCsvReader;
+import com.module.parser.csv.UseCsvWriter;
 import com.module.parser.script.util.CommandGobbler;
 import com.module.parser.script.util.CommandProcess;
 import com.module.parser.script.ProcessState;
@@ -79,6 +81,20 @@ class ParserApplicationTests {
         } catch (Exception e) {
 
         }
+    }
+
+    @Test
+    void testCsvBeanWriter(){
+        try {
+            UseCsvWriter.writeWithCsvBeanWriter();
+        }catch (Exception e){e.printStackTrace();}
+    }
+
+    @Test
+    void testCsvBeanReader(){
+        try{
+            UseCsvReader.readWithCsvBeanReader();
+        }catch (Exception e){e.printStackTrace();}
     }
 
 }
