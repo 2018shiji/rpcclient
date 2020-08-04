@@ -7,6 +7,7 @@ import com.module.parser.script.util.CommandGobbler;
 import com.module.parser.script.util.CommandProcess;
 import com.module.parser.script.ProcessState;
 import com.module.parser.script.util.TimeoutThread;
+import com.module.parser.util.FileEncodeDetector;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -100,8 +101,14 @@ class ParserApplicationTests {
     @Test
     void testPojoInfoReader(){
         try{
-            UseCsvReader.readPojoInfoWithCsvBeanReader();
+            UseCsvReader.readWithCsvMapReader();
         } catch (Exception e){e.printStackTrace();}
+    }
+
+    @Test
+    void testFileEncodeDetector() {
+        String fileEncode = FileEncodeDetector.getFileEncode("D:\\log\\v_port_plate.csv");
+        System.out.println(fileEncode);
     }
 
 }
