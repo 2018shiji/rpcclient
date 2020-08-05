@@ -3,10 +3,12 @@ package com.module.parser;
 
 import com.module.parser.csv.UseCsvReader;
 import com.module.parser.csv.UseCsvWriter;
+import com.module.parser.regex.RegExpPattern;
 import com.module.parser.script.util.CommandGobbler;
 import com.module.parser.script.util.CommandProcess;
 import com.module.parser.script.ProcessState;
 import com.module.parser.script.util.TimeoutThread;
+import com.module.parser.util.ChineseToSpeller;
 import com.module.parser.util.FileEncodeDetector;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -108,7 +110,16 @@ class ParserApplicationTests {
     @Test
     void testFileEncodeDetector() {
         String fileEncode = FileEncodeDetector.getFileEncode("D:\\log\\v_port_plate.csv");
-        System.out.println(fileEncode);
+        System.out.println("该文件编码格式为: " + fileEncode);
+    }
+
+    @Test
+    void testPinyin(){
+        String str = "深圳银行";
+        System.out.println("小写输出：" + ChineseToSpeller.getPinyinToLowerCase(str));
+        System.out.println("大写输出：" + ChineseToSpeller.getPinyinToUpperCase(str));
+        System.out.println("首字母大写输出：" + ChineseToSpeller.getPinyinFirstToUpperCase(str));
+        System.out.println("简拼输出：" + ChineseToSpeller.getPinyinJianPin(str));
     }
 
 }

@@ -7,8 +7,7 @@ import org.springframework.util.StringUtils;
 import java.io.*;
 import java.nio.charset.Charset;
 
-@Component
-public class FileEncodeDetector {
+public abstract class FileEncodeDetector {
 
     public static String getFileEncode(String path){
         CodepageDetectorProxy detector = CodepageDetectorProxy.getInstance();

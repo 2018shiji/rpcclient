@@ -2,7 +2,8 @@ package com.module.parser.regex;
 
 import java.util.regex.Pattern;
 
-public class MyPattern {
+
+public class RegExpPattern {
     /**
      * 提取URL中的ip与端口号
      * MyPattern.GET_PORT.matcher(URL).group(1)
@@ -43,4 +44,6 @@ public class MyPattern {
     public static final Pattern EMAIL_Z =
             Pattern.compile("^[a-zA-Z0-9\u4e00-\u9fa5]+@[a-zA-z0-9_-]+(.[a-zA-Z0-9_-]+)+$");
 
+    public static final Pattern ZHONG_WEN_ZI_FU =
+            Pattern.compile("[\\u4E00-\\u9FA5]+");
 }

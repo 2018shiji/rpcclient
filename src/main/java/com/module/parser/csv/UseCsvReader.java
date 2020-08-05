@@ -74,7 +74,7 @@ public class UseCsvReader {
 
         ICsvBeanReader beanReader = null;
         try {
-            FileReader reader = new FileReader("D:\\log\\v_port_plate.csv", Charset.forName("UTF-8"));
+            FileReader reader = new FileReader("D:\\log\\v_port_plate.csv", Charset.forName("GBK"));
             beanReader = new CsvBeanReader(reader, CsvPreference.STANDARD_PREFERENCE);
 //            char result;
 //            while((result = (char)reader.read()) != -1){
@@ -85,7 +85,7 @@ public class UseCsvReader {
             final CellProcessor[] processors = getPojoInfoProcessors();
 
             PojoInfoBean pojo;
-            while( (pojo = beanReader.read(PojoInfoBean.class, header, processors)) != null ) {
+            while((pojo = beanReader.read(PojoInfoBean.class, header, processors)) != null ) {
                 System.out.println(String.format("lineNo=%s, rowNo=%s, customerMap=%s", beanReader.getLineNumber(),
                         beanReader.getRowNumber(), pojo));
             }
