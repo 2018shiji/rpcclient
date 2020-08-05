@@ -13,6 +13,7 @@ import java.util.Set;
 
 /**
  * https://www.iteye.com/blog/canrry-1344611
+ * https://blog.csdn.net/qq_40083897/article/details/85779162
  */
 public abstract class ChineseToSpeller {
 
@@ -173,4 +174,72 @@ public abstract class ChineseToSpeller {
         }
         return strChar;
     }
+
+    public static String getPingyinNonMultiTone(String inputString) {
+
+        //创建转换对象
+        HanyuPinyinOutputFormat format = new HanyuPinyinOutputFormat();
+        //转换类型（大写or小写）
+        format.setCaseType(HanyuPinyinCaseType.LOWERCASE);
+        //定义中文声调的输出格式
+        format.setToneType(HanyuPinyinToneType.WITHOUT_TONE);
+        //定义字符的输出格式
+        format.setVCharType(HanyuPinyinVCharType.WITH_U_AND_COLON);
+
+        //转换为字节数组
+        char[] input = inputString.trim().toCharArray();
+        // 用StringBuffer（字符串缓冲）来接收处理的数据
+        StringBuffer output = new StringBuffer();
+
+        try {
+            for (int i = 0; i < input.length; i++) {
+                //判断是否是一个汉子字符
+                if (java.lang.Character.toString(input[i]).matches("[\\u4E00-\\u9FA5]+")) {
+                    String[] temp = PinyinHelper.toHanyuPinyinStringArray(input[i], format);
+                    output.append(temp[0]);
+                } else {
+                    // 如果不是汉字字符，直接拼接
+                    output.append(java.lang.Character.toString(input[i]));
+                }
+            }
+        } catch (BadHanyuPinyinOutputFormatCombination e) {
+            e.printStackTrace();
+        }
+        return output.toString();
+    }
+
+    /**
+     * 获取汉字串拼音，英文字符不变 【首字母大写】
+     * @param chinese 汉字串
+     * @return 汉语拼音
+     */
+    public static String getFullSpellNonMultiTone(String chinese) {
+        // 用StringBuffer（字符串缓冲）来接收处理的数据
+        StringBuffer sb = new StringBuffer();
+        //字符串转换字节数组
+        char[] arr = chinese.toCharArray();
+        HanyuPinyinOutputFormat defaultFormat = new HanyuPinyinOutputFormat();
+        //转换类型（大写or小写）
+        defaultFormat.setCaseType(HanyuPinyinCaseType.LOWERCASE);
+        //定义中文声调的输出格式
+        defaultFormat.setToneType(HanyuPinyinToneType.WITHOUT_TONE);
+        //定义字符的输出格式
+        defaultFormat.setVCharType(HanyuPinyinVCharType.WITH_U_AND_COLON);
+        for (int i = 0; i < arr.length; i++) {
+            //判断是否是汉子字符
+            if (arr[i] > 128) {
+                try {
+                    sb.append(capitalize(PinyinHelper.toHanyuPinyinStringArray(arr[i], defaultFormat)[0]));
+                } catch (BadHanyuPinyinOutputFormatCombination e) {
+                    e.printStackTrace();
+                }
+            } else {
+                // 如果不是汉字字符，直接拼接
+                sb.append(arr[i]);
+            }
+        }
+        return sb.toString();
+    }
+
+
 }

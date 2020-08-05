@@ -1,5 +1,6 @@
 package com.module.parser.csv;
 
+import com.module.parser.util.ChineseToSpeller;
 import org.supercsv.cellprocessor.Optional;
 import org.supercsv.cellprocessor.ParseBool;
 import org.supercsv.cellprocessor.ParseDate;
@@ -14,6 +15,7 @@ import org.supercsv.io.ICsvBeanReader;
 import org.supercsv.prefs.CsvPreference;
 
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.util.Map;
@@ -70,16 +72,35 @@ public class UseCsvReader {
         return processors;
     }
 
-    public static void readWithCsvMapReader() throws Exception {
+    public static void readWithCsvBeanReader2() throws Exception {
 
         ICsvBeanReader beanReader = null;
+        FileReader reader = null;
+        FileWriter writer = null;
+        FileReader finalReader = null;
+
         try {
-            FileReader reader = new FileReader("D:\\log\\v_port_plate.csv", Charset.forName("GBK"));
-            beanReader = new CsvBeanReader(reader, CsvPreference.STANDARD_PREFERENCE);
-//            char result;
-//            while((result = (char)reader.read()) != -1){
-//                System.out.print(result);
-//            }
+            reader = new FileReader("D:\\log\\v_port_plate.csv", Charset.forName("GBK"));
+            writer = new FileWriter("D:\\log\\v_port_plate_backup2.csv");
+            int result;
+            while((result = reader.read()) != -1){
+                if(result > Long.parseLong("4e00", 16) && result < Long.parseLong("9fa5", 16)){
+                    char[] chars = ChineseToSpeller.getFullSpellNonMultiTone(String.valueOf((char) result)).toCharArray();
+                    writer.write(chars);
+                    for (int i = 0; i < chars.length; i++) {
+                        System.out.print(chars[i]);
+                    }
+                    System.out.println();
+                } else { writer.write(result); }
+            }
+        } finally {
+            if(reader != null) reader.close();
+            if(writer != null) writer.close();
+        }
+
+        try{
+            finalReader = new FileReader("D:\\log\\v_port_plate_backup2.csv", Charset.forName("GBK"));
+            beanReader = new CsvBeanReader(finalReader, CsvPreference.STANDARD_PREFERENCE);
 
             final String[] header = beanReader.getHeader(true);
             final CellProcessor[] processors = getPojoInfoProcessors();
@@ -89,12 +110,9 @@ public class UseCsvReader {
                 System.out.println(String.format("lineNo=%s, rowNo=%s, customerMap=%s", beanReader.getLineNumber(),
                         beanReader.getRowNumber(), pojo));
             }
-
-        }
-        finally {
-            if( beanReader != null ) {
-                beanReader.close();
-            }
+        }finally{
+            if(beanReader != null ) beanReader.close();
+            if(finalReader != null) finalReader.close();
         }
     }
 }
