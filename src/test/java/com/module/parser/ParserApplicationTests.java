@@ -1,14 +1,10 @@
 package com.module.parser;
 
 
-import com.module.parser.csv.UseCsvReader;
-import com.module.parser.csv.UseCsvWriter;
-import com.module.parser.script.util.CommandGobbler;
-import com.module.parser.script.util.CommandProcess;
-import com.module.parser.script.ProcessState;
-import com.module.parser.script.util.TimeoutThread;
-import com.module.parser.util.ChineseToSpeller;
-import com.module.parser.util.FileEncodeDetector;
+import com.module.parser.command.CommandGobbler;
+import com.module.parser.command.CommandProcess;
+import com.module.parser.command.ProcessState;
+import com.module.parser.command.TimeoutThread;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -86,63 +82,5 @@ class ParserApplicationTests {
         }
     }
 
-    @Test
-    void testCsvBeanWriter(){
-        try {
-            UseCsvWriter.writeWithCsvBeanWriter();
-        }catch (Exception e){e.printStackTrace();}
-    }
-
-    @Test
-    void testCsvBeanReader(){
-        try{
-            UseCsvReader.readWithCsvBeanReader();
-        }catch (Exception e){e.printStackTrace();}
-    }
-
-    @Test
-    void testPojoInfoReader(){
-        try{
-            UseCsvReader.readWithCsvBeanReader2();
-        } catch (Exception e){e.printStackTrace();}
-    }
-
-    @Test
-    void testFileEncodeDetector() {
-        String fileEncode = FileEncodeDetector.getFileEncode("D:\\log\\v_port_plate.csv");
-        System.out.println("该文件编码格式为: " + fileEncode);
-    }
-
-    @Test
-    void testPinyin(){
-        String str = "深圳银行";
-        System.out.println("小写输出：" + ChineseToSpeller.getPinyinToLowerCase(str));
-        System.out.println("大写输出：" + ChineseToSpeller.getPinyinToUpperCase(str));
-        System.out.println("首字母大写输出：" + ChineseToSpeller.getPinyinFirstToUpperCase(str));
-        System.out.println("简拼输出：" + ChineseToSpeller.getPinyinJianPin(str));
-    }
-
-    @Test
-    void testIII() throws Exception{
-        File sourceFile = new File("D:\\log\\v_port_plate.csv");
-        File dsFile = new File("D:\\log\\v_port_plate_backup2.csv");
-        FileReader reader = new FileReader(sourceFile, Charset.forName("GBK"));
-        FileWriter writer = new FileWriter(dsFile);
-        int result;
-        while((result = reader.read()) != -1){
-            if(result > Long.parseLong("4e00", 16) && result < Long.parseLong("9fa5", 16)){
-                char[] chars = ChineseToSpeller.getPingyinNonMultiTone(String.valueOf((char) result)).toCharArray();
-                writer.write(chars);
-                for (int i = 0; i < chars.length; i++) {
-                    System.out.print(chars[i]);
-                }
-                System.out.println();
-            } else {
-                writer.write(result);
-            }
-        }
-        reader.close();
-        writer.close();
-    }
 
 }
