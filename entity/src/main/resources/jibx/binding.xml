@@ -1,0 +1,9 @@
+<binding xmlns:ns1="http://module.com/parser/entity" name="binding" package="com.module.parser.entity">
+  <namespace uri="http://module.com/parser/entity" default="elements"/>
+  <mapping abstract="true" type-name="ns1:bookServer" class="com.module.parser.entity.BookServer">
+    <value style="element" name="name" field="name" usage="optional"/>
+  </mapping>
+  <mapping class="com.module.parser.entity.BookServer" name="bookServer">
+    <structure map-as="ns1:bookServer"/>
+  </mapping>
+</binding>

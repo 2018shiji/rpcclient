@@ -10,10 +10,10 @@
     </parent>
 
     <groupId>com.module.parser</groupId>
-    <artifactId>xml</artifactId>
+    <artifactId>entity</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>xml</name>
-    <description>xml module in parser</description>
+    <name>entity</name>
+    <description>entity module for parser</description>
 
     <properties>
         <java.version>11</java.version>
