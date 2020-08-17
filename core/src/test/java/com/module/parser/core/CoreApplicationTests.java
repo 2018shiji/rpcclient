@@ -1,5 +1,6 @@
 package com.module.parser.core;
 
+import com.module.parser.core.picocli.BindGenCli;
 import com.module.parser.core.util.ChineseToSpellerUtil;
 import com.module.parser.core.util.FileEncodeDetectorUtil;
 import org.junit.jupiter.api.Test;
@@ -53,6 +54,14 @@ class CoreApplicationTests {
         }
         reader.close();
         writer.close();
+    }
+
+    @Test
+    void testBindGenCli(){
+        String extJar = "-cp=D:\\software\\jars\\jibx1.3.3\\jibx\\lib\\jibx-tools.jar;bin org.jibx.binding.generator.BindGen";
+        String output = "-t=C:\\Users\\lizhuangjie.chnet\\IdeaProjects\\parser\\xml\\src\\main\\resources\\jibx";
+        String targetClass = "com.module.parser.xml.pojo.OrderBean11";
+        new BindGenCli().executeCmd(extJar, output, targetClass);
     }
 
 }
