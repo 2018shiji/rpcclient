@@ -1,4 +1,4 @@
-package com.module.parser.entity;
+package com.module.parser.entity.test;
 
 import lombok.Data;
 

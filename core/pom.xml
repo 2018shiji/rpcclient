@@ -40,6 +40,30 @@
         </dependency>
 
         <dependency>
+            <groupId>com.module.cpdetector</groupId>
+            <artifactId>main</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.module.cpdetector</groupId>
+            <artifactId>ext_antlr</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.module.cpdetector</groupId>
+            <artifactId>ext_chardet</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.module.cpdetector</groupId>
+            <artifactId>ext_jargs</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.belerweb</groupId>
             <artifactId>pinyin4j</artifactId>
             <version>2.5.1</version>

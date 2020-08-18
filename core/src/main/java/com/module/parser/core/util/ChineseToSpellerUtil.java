@@ -1,5 +1,6 @@
 package com.module.parser.core.util;
 
+import com.module.parser.core.regExp.RegExpPattern;
 import net.sourceforge.pinyin4j.PinyinHelper;
 import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType;
 import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat;
@@ -54,7 +55,7 @@ public abstract class ChineseToSpellerUtil {
                 char c = srcChar[i];
 
                 //是中文或者a-z或者A-Z转换拼音
-                if (String.valueOf(c).matches(RegExpPatternUtil.ZHONG_WEN_ZI_FU.pattern())) {
+                if (String.valueOf(c).matches(RegExpPattern.ZHONG_WEN_ZI_FU.pattern())) {
                     try {
                         temp[i] = PinyinHelper.toHanyuPinyinStringArray(chars[i], getDefaultOutputFormat());
 

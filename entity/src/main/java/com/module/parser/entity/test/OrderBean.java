@@ -1,6 +1,9 @@
-package com.module.parser.entity;
+package com.module.parser.entity.test;
 
-import com.module.parser.entity.orderBean.*;
+import com.module.parser.entity.test.orderbean.Address;
+import com.module.parser.entity.test.orderbean.Customer;
+import com.module.parser.entity.test.orderbean.Item;
+import com.module.parser.entity.test.orderbean.Shipping;
 import lombok.Data;
 
 import java.util.Date;

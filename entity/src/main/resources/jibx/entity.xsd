@@ -1,8 +1,0 @@
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://module.com/parser/entity" elementFormDefault="qualified" targetNamespace="http://module.com/parser/entity">
-  <xs:complexType name="bookServer">
-    <xs:sequence>
-      <xs:element type="xs:string" name="name" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element type="tns:bookServer" name="bookServer"/>
-</xs:schema>

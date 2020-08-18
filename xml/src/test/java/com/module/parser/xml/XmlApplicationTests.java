@@ -1,10 +1,11 @@
 package com.module.parser.xml;
 
-import com.module.parser.xml.pojo.OrderBean;
-import com.module.parser.entity.orderBean.Address;
-import com.module.parser.entity.orderBean.Customer;
-import com.module.parser.entity.orderBean.Item;
-import com.module.parser.entity.orderBean.Shipping;
+
+import com.module.parser.entity.test.OrderBean;
+import com.module.parser.entity.test.orderbean.Address;
+import com.module.parser.entity.test.orderbean.Customer;
+import com.module.parser.entity.test.orderbean.Item;
+import com.module.parser.entity.test.orderbean.Shipping;
 import org.jibx.runtime.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,0 +1,31 @@
+<binding xmlns:ns2="http://module.com/parser/entity/test" xmlns:ns1="http://module.com/parser/entity/test/orderbean">
+  <namespace uri="http://module.com/parser/entity/test" default="elements"/>
+  <mapping abstract="true" type-name="ns2:orderBean" class="com.module.parser.entity.test.OrderBean">
+    <value style="attribute" name="orderNumber" field="orderNumber"/>
+    <structure field="customer" usage="optional" name="customer">
+      <value style="attribute" name="customerNumber" field="customerNumber"/>
+      <value style="element" name="firstName" field="firstName" usage="optional"/>
+      <value style="element" name="lastName" field="lastName" usage="optional"/>
+      <collection field="middleNames" usage="optional" create-type="java.util.ArrayList">
+        <value name="middleName" type="java.lang.String"/>
+      </collection>
+    </structure>
+    <structure map-as="ns1:address" field="billTo" usage="optional" name="billTo"/>
+    <value style="element" name="shipping" field="shipping" usage="optional"/>
+    <structure map-as="ns1:address" field="shipTo" usage="optional" name="shipTo"/>
+    <collection field="items" usage="optional" create-type="java.util.ArrayList">
+      <structure type="com.module.parser.entity.test.orderbean.Item" name="item">
+        <value style="element" name="id" field="id" usage="optional"/>
+        <value style="element" name="description" field="description" usage="optional"/>
+        <value style="attribute" name="quantity" field="quantity"/>
+        <value style="attribute" name="price" field="price"/>
+      </structure>
+    </collection>
+    <value style="attribute" name="orderDate" field="orderDate" usage="optional"/>
+    <value style="attribute" name="shipDate" field="shipDate" usage="optional"/>
+    <value style="attribute" name="total" field="total" usage="optional"/>
+  </mapping>
+  <mapping class="com.module.parser.entity.test.OrderBean" name="orderBean">
+    <structure map-as="ns2:orderBean"/>
+  </mapping>
+</binding>

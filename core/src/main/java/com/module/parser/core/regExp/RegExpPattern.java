@@ -1,9 +1,9 @@
-package com.module.parser.core.util;
+package com.module.parser.core.regExp;
 
 import java.util.regex.Pattern;
 
 
-public class RegExpPatternUtil {
+public class RegExpPattern {
     /**
      * 提取URL中的ip与端口号
      * MyPattern.GET_PORT.matcher(URL).group(1)

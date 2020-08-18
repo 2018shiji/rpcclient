@@ -1,0 +1,11 @@
+<binding xmlns:ns1="http://module.com/parser/entity/test/orderbean">
+  <namespace uri="http://module.com/parser/entity/test/orderbean" default="elements" prefix="ns1"/>
+  <mapping abstract="true" type-name="ns1:address" class="com.module.parser.entity.test.orderbean.Address">
+    <value style="element" name="street1" field="street1" usage="optional"/>
+    <value style="element" name="street2" field="street2" usage="optional"/>
+    <value style="element" name="city" field="city" usage="optional"/>
+    <value style="element" name="state" field="state" usage="optional"/>
+    <value style="element" name="postCode" field="postCode" usage="optional"/>
+    <value style="element" name="country" field="country" usage="optional"/>
+  </mapping>
+</binding>

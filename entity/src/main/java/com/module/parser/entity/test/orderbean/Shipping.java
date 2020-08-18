@@ -1,4 +1,4 @@
-package com.module.parser.entity.orderBean;
+package com.module.parser.entity.test.orderbean;
 
 /**
  * Supported shipment methods. The "INTERNATIONAL" shipment methods can only be used for
