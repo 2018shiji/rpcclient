@@ -7,6 +7,7 @@ import java.util.List;
 
 public class JavaCmdRunnable implements Runnable {
 
+
     private List<CommandLine.Model.ArgSpec> parseResults;
 
     public void fulfillParseResults(List<CommandLine.Model.ArgSpec> results){ this.parseResults = results; }
