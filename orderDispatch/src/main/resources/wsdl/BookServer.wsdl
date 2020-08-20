@@ -1,0 +1,207 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://module.com/parser/entity/test/BookServer" targetNamespace="http://module.com/parser/entity/test/BookServer">
+  <wsdl:types>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://module.com/parser/entity/test/BookServer" xmlns:ns1="http://java.lang" elementFormDefault="qualified" targetNamespace="http://module.com/parser/entity/test/BookServer">
+      <xs:import namespace="http://java.lang" schemaLocation="java.lang.xsd"/>
+      <xs:element name="getName">
+        <xs:complexType>
+          <xs:sequence/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getNameResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element type="xs:string" name="return" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="setName">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element type="xs:string" name="name" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="setNameResponse">
+        <xs:complexType>
+          <xs:sequence/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="equals">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element type="ns1:object" name="o" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="equalsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element type="xs:boolean" name="return"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="canEqual">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element type="ns1:object" name="other" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="canEqualResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element type="xs:boolean" name="return"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="hashCode">
+        <xs:complexType>
+          <xs:sequence/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="hashCodeResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element type="xs:int" name="return"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="toString">
+        <xs:complexType>
+          <xs:sequence/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="toStringResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element type="xs:string" name="return" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getNameMessage">
+    <wsdl:part name="part" element="tns:getName"/>
+  </wsdl:message>
+  <wsdl:message name="getNameResponseMessage">
+    <wsdl:part name="part" element="tns:getNameResponse"/>
+  </wsdl:message>
+  <wsdl:message name="setNameMessage">
+    <wsdl:part name="part" element="tns:setName"/>
+  </wsdl:message>
+  <wsdl:message name="setNameResponseMessage">
+    <wsdl:part name="part" element="tns:setNameResponse"/>
+  </wsdl:message>
+  <wsdl:message name="equalsMessage">
+    <wsdl:part name="part" element="tns:equals"/>
+  </wsdl:message>
+  <wsdl:message name="equalsResponseMessage">
+    <wsdl:part name="part" element="tns:equalsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="canEqualMessage">
+    <wsdl:part name="part" element="tns:canEqual"/>
+  </wsdl:message>
+  <wsdl:message name="canEqualResponseMessage">
+    <wsdl:part name="part" element="tns:canEqualResponse"/>
+  </wsdl:message>
+  <wsdl:message name="hashCodeMessage">
+    <wsdl:part name="part" element="tns:hashCode"/>
+  </wsdl:message>
+  <wsdl:message name="hashCodeResponseMessage">
+    <wsdl:part name="part" element="tns:hashCodeResponse"/>
+  </wsdl:message>
+  <wsdl:message name="toStringMessage">
+    <wsdl:part name="part" element="tns:toString"/>
+  </wsdl:message>
+  <wsdl:message name="toStringResponseMessage">
+    <wsdl:part name="part" element="tns:toStringResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="BookServerPortType">
+    <wsdl:operation name="getName">
+      <wsdl:input message="tns:getNameMessage"/>
+      <wsdl:output message="tns:getNameResponseMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="setName">
+      <wsdl:input message="tns:setNameMessage"/>
+      <wsdl:output message="tns:setNameResponseMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="equals">
+      <wsdl:input message="tns:equalsMessage"/>
+      <wsdl:output message="tns:equalsResponseMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="canEqual">
+      <wsdl:input message="tns:canEqualMessage"/>
+      <wsdl:output message="tns:canEqualResponseMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="hashCode">
+      <wsdl:input message="tns:hashCodeMessage"/>
+      <wsdl:output message="tns:hashCodeResponseMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="toString">
+      <wsdl:input message="tns:toStringMessage"/>
+      <wsdl:output message="tns:toStringResponseMessage"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BookServerBinding" type="tns:BookServerPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="getName">
+      <soap:operation soapAction="urn:getName"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setName">
+      <soap:operation soapAction="urn:setName"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="equals">
+      <soap:operation soapAction="urn:equals"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="canEqual">
+      <soap:operation soapAction="urn:canEqual"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="hashCode">
+      <soap:operation soapAction="urn:hashCode"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="toString">
+      <soap:operation soapAction="urn:toString"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BookServer">
+    <wsdl:port name="BookServerPort" binding="tns:BookServerBinding">
+      <soap:address location="http://localhost:8080/axis2/services/BookServer"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

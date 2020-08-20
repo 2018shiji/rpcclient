@@ -1,0 +1,4 @@
+<binding xmlns:ns2="http://java.lang" name="binding" force-classes="true" add-constructors="true">
+  <namespace uri="http://module.com/parser/entity/test/BookServer" prefix="ns1"/>
+  <mapping abstract="true" type-name="ns2:object" class="java.lang.Object"/>
+</binding>

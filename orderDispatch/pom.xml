@@ -3,24 +3,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.4.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <groupId>com.module.parser</groupId>
+        <artifactId>parser</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
     </parent>
 
     <groupId>com.module.parser</groupId>
-    <artifactId>parser</artifactId>
+    <artifactId>orderDispatch</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>parser</name>
-    <description>parser module for all</description>
-
-    <packaging>pom</packaging>
-    <modules>
-        <module>core</module>
-        <module>csv</module>
-        <module>orderDispatch</module>
-    </modules>
+    <name>orderDispatch</name>
+    <description>entity module for parser</description>
 
     <properties>
         <java.version>11</java.version>
@@ -33,14 +26,9 @@
         </dependency>
 
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>com.module.parser</groupId>
+            <artifactId>core</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
         <dependency>
@@ -61,11 +49,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <classifier>exec</classifier>
-                </configuration>
             </plugin>
-
         </plugins>
     </build>
 
