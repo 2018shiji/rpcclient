@@ -12,6 +12,6 @@ public class Register {
     @JSONField(name = "PASSWORD")
     private String password;
     @JSONField(name = "CLIENTID")
-    private String clientIp;
+    private String clientId;
 
 }

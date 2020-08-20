@@ -1,6 +1,6 @@
 package com.module.parser;
 
-import com.module.parser.wsdlGen.LoginResultPortImpl;
+import com.module.parser.cxf.CTOSPortImpl;
 import org.apache.cxf.Bus;
 import org.apache.cxf.bus.spring.SpringBus;
 import org.apache.cxf.jaxws.EndpointImpl;
@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
 
 import javax.xml.ws.Endpoint;
 
@@ -33,14 +34,14 @@ public class WebServiceConfig {
 
     @Bean
     public Endpoint endpoint(){
-        EndpointImpl endpoint = new EndpointImpl(bus, new LoginResultPortImpl());
+        EndpointImpl endpoint = new EndpointImpl(bus, new CTOSPortImpl());
         endpoint.publish("/LoginResultPort");
         return endpoint;
     }
 
     @Bean
     public Endpoint endpoint2(){
-        EndpointImpl endpoint = new EndpointImpl(bus, new LoginResultPortImpl());
+        EndpointImpl endpoint = new EndpointImpl(bus, new CTOSPortImpl());
         endpoint.publish("/LoginResultP1ort");
         return endpoint;
     }

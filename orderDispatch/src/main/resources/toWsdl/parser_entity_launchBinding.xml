@@ -1,0 +1,9 @@
+<binding xmlns:ns2="http://module.com/parser/entity/launch" force-classes="true" add-constructors="true">
+  <namespace uri="http://module.com/parser/entity/launch" default="elements"/>
+  <mapping abstract="true" type-name="ns2:login" class="com.module.parser.entity.launch.Login">
+    <value style="element" name="userName" field="userName" usage="optional"/>
+    <value style="element" name="password" field="password" usage="optional"/>
+    <value style="attribute" name="terminalNo" field="terminalNo"/>
+    <value style="element" name="clientIp" field="clientIp" usage="optional"/>
+  </mapping>
+</binding>

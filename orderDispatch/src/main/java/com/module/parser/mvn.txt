@@ -1,0 +1,4 @@
+
+java -cp E:\softWare\jibx1.3.3\jibx\lib\jibx-tools.jar;start\bin org.jibx.ws.wsdl.tools.Jibx2Wsdl -t C:\Users\Administrator\IdeaProjects\parser\orderDispatch\src\main\resources\toWsdl com.module.parser.entity.test.CTOS
+
+wsdl2java -encoding utf-8 -p com.module.parser.cxf -d C:\Users\Administrator\IdeaProjects\parser\orderDispatch\src\main\java -all C:\Users\Administrator\IdeaProjects\parser\orderDispatch\src\main\resources\toWsdl\CTOS.wsdl

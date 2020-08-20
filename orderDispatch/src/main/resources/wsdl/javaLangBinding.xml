@@ -1,6 +1,0 @@
-<binding xmlns:ns2="http://java.lang" force-classes="true" add-constructors="true">
-  <mapping abstract="true" type-name="ns2:object" class="java.lang.Object"/>
-  <mapping class="java.lang.Object" name="object">
-    <structure map-as="ns2:object"/>
-  </mapping>
-</binding>

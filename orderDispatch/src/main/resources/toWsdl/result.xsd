@@ -1,0 +1,33 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://module.com/parser/entity/result" elementFormDefault="qualified" targetNamespace="http://module.com/parser/entity/result">
+  <xs:complexType name="loginResult">
+    <xs:sequence>
+      <xs:element name="returnInfo" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element type="xs:string" name="errorCode" minOccurs="0"/>
+            <xs:element type="xs:string" name="errorMsg" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="dataTable" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element type="xs:string" name="name" minOccurs="0"/>
+            <xs:element name="record" minOccurs="0">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element type="xs:string" name="deviceNo" minOccurs="0"/>
+                  <xs:element type="xs:string" name="deviceMType" minOccurs="0"/>
+                  <xs:element type="xs:string" name="workType" minOccurs="0"/>
+                  <xs:element type="xs:string" name="moveCapacity" minOccurs="0"/>
+                </xs:sequence>
+                <xs:attribute type="xs:boolean" use="required" name="isHalt"/>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element type="xs:string" name="ticketId" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

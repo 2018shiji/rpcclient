@@ -1,0 +1,10 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://module.com/parser/entity/launch" elementFormDefault="qualified" targetNamespace="http://module.com/parser/entity/launch">
+  <xs:complexType name="login">
+    <xs:sequence>
+      <xs:element type="xs:string" name="userName" minOccurs="0"/>
+      <xs:element type="xs:string" name="password" minOccurs="0"/>
+      <xs:element type="xs:string" name="clientIp" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:int" use="required" name="terminalNo"/>
+  </xs:complexType>
+</xs:schema>
