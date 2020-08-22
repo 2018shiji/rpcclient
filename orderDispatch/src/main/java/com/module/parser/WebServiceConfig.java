@@ -1,5 +1,6 @@
 package com.module.parser;
 
+
 import com.module.parser.cxf2.LoginResultTestPortImpl;
 import org.apache.cxf.Bus;
 import org.apache.cxf.bus.spring.SpringBus;
