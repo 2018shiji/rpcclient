@@ -1,0 +1,13 @@
+<binding xmlns:ns1="http://module.com/parser/entity/test/order/Order" xmlns:ns2="http://java.lang" xmlns:ns3="http://module.com/parser/entity/test/order">
+  <namespace uri="http://module.com/parser/entity/test/order/Order" prefix="ns1"/>
+  <mapping abstract="true" type-name="ns1:stringList" class="java.util.List" create-type="java.util.ArrayList">
+    <collection>
+      <structure map-as="ns2:string" name="string"/>
+    </collection>
+  </mapping>
+  <mapping abstract="true" type-name="ns1:customerList" class="java.util.List" create-type="java.util.ArrayList">
+    <collection>
+      <structure map-as="ns3:customer" name="customer"/>
+    </collection>
+  </mapping>
+</binding>

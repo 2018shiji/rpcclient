@@ -1,0 +1,5 @@
+<binding name="binding" package="com.module.parser.entity.test.order">
+  <include path="javaLangBinding.xml"/>
+  <include path="parser_entity_test_orderBinding.xml"/>
+  <include path="parser_entity_test_order_OrderBinding.xml"/>
+</binding>

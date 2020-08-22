@@ -1,0 +1,18 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://module.com/parser/entity/test/order" elementFormDefault="qualified" targetNamespace="http://module.com/parser/entity/test/order">
+  <xs:complexType name="customer">
+    <xs:sequence>
+      <xs:element type="xs:string" name="name"/>
+      <xs:element type="xs:string" name="family" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute type="xs:int" use="required" name="age"/>
+  </xs:complexType>
+  <xs:complexType name="order">
+    <xs:sequence>
+      <xs:element type="tns:customer" name="customer"/>
+      <xs:element type="xs:string" name="food" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element type="tns:customer" name="customer" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute type="xs:int" use="required" name="orderNo"/>
+  </xs:complexType>
+  <xs:element type="tns:order" name="order"/>
+</xs:schema>

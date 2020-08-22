@@ -1,0 +1,12 @@
+<binding xmlns:ns2="http://java.lang">
+  <mapping abstract="true" type-name="ns2:object" class="java.lang.Object"/>
+  <mapping class="java.lang.Object" name="object">
+    <structure map-as="ns2:object"/>
+  </mapping>
+  <mapping abstract="true" type-name="ns2:string" class="java.lang.String">
+    <structure map-as="ns2:object"/>
+  </mapping>
+  <mapping extends="java.lang.Object" class="java.lang.String" name="string">
+    <structure map-as="ns2:string"/>
+  </mapping>
+</binding>

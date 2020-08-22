@@ -1,5 +1,0 @@
-<binding name="binding" package="com.module.parser.entity.test.orderbean" force-classes="true" add-constructors="true">
-  <namespace uri="http://module.com/parser/entity/test/OrderBean" prefix="ns1"/>
-  <include path="javaLangBinding.xml"/>
-  <include path="parser_entity_test_orderbeanBinding.xml"/>
-</binding>
