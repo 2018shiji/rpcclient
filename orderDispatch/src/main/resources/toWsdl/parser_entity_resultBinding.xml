@@ -2,7 +2,7 @@
   <namespace uri="http://module.com/parser/entity/result" default="elements"/>
   <mapping abstract="true" type-name="ns3:loginResult" class="com.module.parser.entity.result.LoginResult">
     <structure field="returnInfo" usage="optional" name="returnInfo">
-      <value style="element" name="errorCode" field="errorCode" usage="optional"/>
+      <value style="element" name="errorCode" field="errorCode" usage="required"/>
       <value style="element" name="errorMsg" field="errorMsg" usage="optional"/>
     </structure>
     <collection field="dataTables" usage="optional" create-type="java.util.ArrayList">

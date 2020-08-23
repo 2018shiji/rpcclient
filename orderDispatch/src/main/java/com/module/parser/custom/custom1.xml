@@ -1,6 +1,0 @@
-<custom property-access="true">
-    <class name="com.module.parser.entity.test.order.Customer"
-           requireds="age name"></class>
-    <class name="com.module.parser.entity.test.order.Order"
-           requireds="orderNo customer"></class>
-</custom>

@@ -1,9 +1,0 @@
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://module.com/parser/entity/test" elementFormDefault="qualified" targetNamespace="http://module.com/parser/entity/test">
-  <xs:complexType name="CTOS">
-    <xs:sequence>
-      <xs:element type="xs:string" name="userId" minOccurs="0"/>
-      <xs:element type="xs:string" name="password" minOccurs="0"/>
-      <xs:element type="xs:string" name="clientIp" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-</xs:schema>

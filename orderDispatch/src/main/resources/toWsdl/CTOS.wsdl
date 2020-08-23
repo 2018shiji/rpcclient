@@ -1,4 +1,5 @@
 <wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://module.com/parser/entity/test/CTOS" targetNamespace="http://module.com/parser/entity/test/CTOS">
+
   <wsdl:types>
     <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://module.com/parser/entity/test/CTOS" xmlns:ns1="http://module.com/parser/entity/launch" xmlns:ns2="http://module.com/parser/entity/result" elementFormDefault="qualified" targetNamespace="http://module.com/parser/entity/test/CTOS">
       <xs:import namespace="http://module.com/parser/entity/result" schemaLocation="result.xsd"/>
@@ -33,6 +34,7 @@
       </xs:element>
     </xs:schema>
   </wsdl:types>
+
   <wsdl:message name="doLoginMessage">
     <wsdl:part name="part" element="tns:doLogin"/>
   </wsdl:message>
@@ -45,6 +47,7 @@
   <wsdl:message name="doLoginResultResponseMessage">
     <wsdl:part name="part" element="tns:doLoginResultResponse"/>
   </wsdl:message>
+
   <wsdl:portType name="CTOSPortType">
     <wsdl:operation name="doLogin">
       <wsdl:input message="tns:doLoginMessage"/>
@@ -55,6 +58,7 @@
       <wsdl:output message="tns:doLoginResultResponseMessage"/>
     </wsdl:operation>
   </wsdl:portType>
+
   <wsdl:binding name="CTOSBinding" type="tns:CTOSPortType">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
     <wsdl:operation name="doLogin">
@@ -76,9 +80,11 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+
   <wsdl:service name="CTOS">
     <wsdl:port name="CTOSPort" binding="tns:CTOSBinding">
       <soap:address location="http://localhost:8080/axis2/services/CTOS"/>
     </wsdl:port>
   </wsdl:service>
+
 </wsdl:definitions>

@@ -36,25 +36,25 @@ class CoreApplicationTests {
 
     @Test
     void testIII() throws Exception{
-        File sourceFile = new File("D:\\log\\v_port_plate.csv");
-        File dsFile = new File("D:\\log\\v_port_plate_backup2.csv");
-        FileReader reader = new FileReader(sourceFile, Charset.forName("GBK"));
-        FileWriter writer = new FileWriter(dsFile);
-        int result;
-        while((result = reader.read()) != -1){
-            if(result > Long.parseLong("4e00", 16) && result < Long.parseLong("9fa5", 16)){
-                char[] chars = ChineseToSpellerUtil.getPingyinNonMultiTone(String.valueOf((char) result)).toCharArray();
-                writer.write(chars);
-                for (int i = 0; i < chars.length; i++) {
-                    System.out.print(chars[i]);
-                }
-                System.out.println();
-            } else {
-                writer.write(result);
-            }
-        }
-        reader.close();
-        writer.close();
+//        File sourceFile = new File("D:\\log\\v_port_plate.csv");
+//        File dsFile = new File("D:\\log\\v_port_plate_backup2.csv");
+//        FileReader reader = new FileReader(sourceFile, Charset.forName("GBK"));
+//        FileWriter writer = new FileWriter(dsFile);
+//        int result;
+//        while((result = reader.read()) != -1){
+//            if(result > Long.parseLong("4e00", 16) && result < Long.parseLong("9fa5", 16)){
+//                char[] chars = ChineseToSpellerUtil.getPingyinNonMultiTone(String.valueOf((char) result)).toCharArray();
+//                writer.write(chars);
+//                for (int i = 0; i < chars.length; i++) {
+//                    System.out.print(chars[i]);
+//                }
+//                System.out.println();
+//            } else {
+//                writer.write(result);
+//            }
+//        }
+//        reader.close();
+//        writer.close();
     }
 
     @Test
