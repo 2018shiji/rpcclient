@@ -15,7 +15,7 @@ import java.util.Arrays;
 import java.util.Date;
 
 @SpringBootTest
-class ParserApplicationTests {
+class RPCClientApplicationTests {
     @Autowired
     CommandProcess commandProcess;
 

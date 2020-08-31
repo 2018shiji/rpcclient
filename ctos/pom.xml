@@ -3,17 +3,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.module.parser</groupId>
-        <artifactId>parser</artifactId>
+        <groupId>com.module.client</groupId>
+        <artifactId>rpcclient</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.module.parser</groupId>
-    <artifactId>orderDispatch</artifactId>
+    <groupId>com.module.client</groupId>
+    <artifactId>ctos</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>orderDispatch</name>
-    <description>entity module for parser</description>
+    <name>ctos</name>
+    <description>ctos module</description>
 
     <properties>
         <java.version>11</java.version>
@@ -26,9 +26,40 @@
         </dependency>
 
         <dependency>
-            <groupId>com.module.parser</groupId>
+            <groupId>com.module.client</groupId>
             <artifactId>core</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+            <version>3.3.5</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.axis/axis -->
+        <dependency>
+            <groupId>org.apache.axis</groupId>
+            <artifactId>axis</artifactId>
+            <version>1.4</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/javax.xml/jaxrpc-api -->
+        <dependency>
+            <groupId>javax.xml</groupId>
+            <artifactId>jaxrpc-api</artifactId>
+            <version>1.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-xjc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http-jetty</artifactId>
+            <version>3.3.5</version>
         </dependency>
 
         <dependency>

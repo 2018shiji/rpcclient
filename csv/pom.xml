@@ -3,13 +3,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.module.parser</groupId>
-        <artifactId>parser</artifactId>
+        <groupId>com.module.client</groupId>
+        <artifactId>rpcclient</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.module.parser</groupId>
+    <groupId>com.module.client</groupId>
     <artifactId>csv</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>csv</name>
@@ -33,7 +33,7 @@
         </dependency>
 
         <dependency>
-            <groupId>com.module.parser</groupId>
+            <groupId>com.module.client</groupId>
             <artifactId>core</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>

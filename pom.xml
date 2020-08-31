@@ -9,17 +9,17 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.module.parser</groupId>
-    <artifactId>parser</artifactId>
+    <groupId>com.module.client</groupId>
+    <artifactId>rpcclient</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>parser</name>
+    <name>rpcclient</name>
     <description>parser module for all</description>
 
     <packaging>pom</packaging>
     <modules>
         <module>core</module>
         <module>csv</module>
-        <module>orderDispatch</module>
+        <module>ctos</module>
     </modules>
 
     <properties>

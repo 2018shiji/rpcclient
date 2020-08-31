@@ -1,4 +1,4 @@
-package com.module.parser.wsclient;
+package com.module.parser.wsdlclient;
 
 import org.apache.cxf.binding.soap.SoapMessage;
 import org.apache.cxf.headers.Header;
