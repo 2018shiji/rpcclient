@@ -6,26 +6,13 @@ import com.module.parser.entity.launch.Login;
 import org.apache.cxf.endpoint.Client;
 import org.apache.cxf.jaxws.endpoint.dynamic.JaxWsDynamicClientFactory;
 
-public class CxfClient {
+public class Wsdl8CXF {
     private static String USER_NAME = "admin";
     private static String PASS_WORD = "123456";
 
     public static void main(String[] args){
         client2();
     }
-
-//    public static void client1(){
-//        try{
-//            String address = "http://127.0.0.1:8083/CTOS/CTOSResult?wsdl";
-//            JaxWsProxyFactoryBean factoryBean = new JaxWsProxyFactoryBean();
-//            factoryBean.setAddress(address);
-//            factoryBean.setServiceClass(ICTOSService.class);
-//            /** 创建一个代理接口实现*/
-//            ICTOSService cs = (ICTOSService) factoryBean.create();
-//            String result = cs.doLogin("login");
-//            System.out.println(result);
-//        } catch (Exception e){e.printStackTrace();}
-//    }
 
     public static void client2(){
         //创建动态客户端
@@ -41,7 +28,7 @@ public class CxfClient {
 
     private static void testDoLogin(Client client){
         try{
-            Login login = new Login("111", "222", 123, "333");
+            Login login = new Login("DYW", "222", 123, "333");
             String loginJsonStr = JSON.toJSONString(login);
             Object[] objects = client.invoke("doLogin", loginJsonStr);
             System.out.println("返回数据：" + objects[0]);

@@ -30,3 +30,4 @@ build/
 ### VS Code ###
 .vscode/
 /orderDispatch/src/main/java/com/module/parser/control/CTOSResultSupply.java
+/ctos/src/main/java/com/module/parser/control/CTOSResultSupply.java

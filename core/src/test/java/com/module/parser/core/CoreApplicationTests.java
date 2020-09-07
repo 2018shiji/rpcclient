@@ -1,6 +1,5 @@
 package com.module.parser.core;
 
-import com.module.parser.core.picocli.JibxBindGen;
 import com.module.parser.core.util.ChineseToSpellerUtil;
 import com.module.parser.core.util.FileEncodeDetectorUtil;
 import org.junit.jupiter.api.Test;
@@ -57,18 +56,18 @@ class CoreApplicationTests {
 //        writer.close();
     }
 
-    @Test
-    void testCli(){
-        String[] args = {"-cp", "D:\\software\\jars\\jibx1.3.3\\jibx\\lib\\jibx-tools.jar;bin org.jibx.binding.generator.BindGen",
-                "-t", "C:\\Users\\lizhuangjie.chnet\\IdeaProjects\\parser\\entity\\src\\main\\resources\\jibx",
-                "-p", "C:\\Users\\lizhuangjie.chnet\\IdeaProjects\\parser\\entity\\target\\classes",
-                "com.module.parser.entity.test.OrderBean"};
-        JibxBindGen jibxBindGen = new JibxBindGen();
-        CommandLine commandLine = new CommandLine(jibxBindGen);
-        CommandLine.ParseResult parseResult = commandLine.parseArgs(args);
-        jibxBindGen.fulfillParseResults(parseResult.matchedArgs());
-        commandLine.execute(args);
-
-    }
+//    @Test
+//    void testCli(){
+//        String[] args = {"-cp", "D:\\software\\jars\\jibx1.3.3\\jibx\\lib\\jibx-tools.jar;bin org.jibx.binding.generator.BindGen",
+//                "-t", "C:\\Users\\lizhuangjie.chnet\\IdeaProjects\\parser\\entity\\src\\main\\resources\\jibx",
+//                "-p", "C:\\Users\\lizhuangjie.chnet\\IdeaProjects\\parser\\entity\\target\\classes",
+//                "com.module.parser.entity.test.OrderBean"};
+//        JibxBindGen jibxBindGen = new JibxBindGen();
+//        CommandLine commandLine = new CommandLine(jibxBindGen);
+//        CommandLine.ParseResult parseResult = commandLine.parseArgs(args);
+//        jibxBindGen.fulfillParseResults(parseResult.matchedArgs());
+//        commandLine.execute(args);
+//
+//    }
 
 }
