@@ -1,16 +1,13 @@
 package com.module.parser.asmxclient;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ShipmentDownClient extends Asmx8HttpClient {
 
     public List<CtosAccessor> accessors;
 
     public void accessShipmentDown(CtosAccessor... accessorList){
-        Map<String, String> resultBefore = doSomeThingBefore();
+        Map<String, String> resultBefore = new HashMap<>(doSomeThingBefore());
         initAccessors(accessorList);
         accessors.forEach(item -> {item.accessXXX(resultBefore);});
         doSomeThingAfter();
@@ -26,6 +23,7 @@ public class ShipmentDownClient extends Asmx8HttpClient {
         return resultAfter;
     }
 
+
     private void initAccessors(CtosAccessor... accessorList){
         accessors = new ArrayList<>();
         if(accessorList == null || accessorList.length == 0){
@@ -39,11 +37,11 @@ public class ShipmentDownClient extends Asmx8HttpClient {
 
     private class DeShipment implements CtosAccessor {
         @Override
-        public void accessXXX(Map<String, String> nameValuePair) {
-            accessDeShipment();
+        public Map<String, String> accessXXX(Map<String, String> nameValuePair) {
+            return accessDeShipment(nameValuePair);
         }
 
-        private synchronized void accessDeShipment(){
+        private synchronized Map<String, String> accessDeShipment(Map<String, String> nameValuePair){
             String content = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:tem=\"http://tempuri.org/\">\n" +
                     "   <soap:Header/>\n" +
                     "   <soap:Body>\n" +
@@ -54,16 +52,17 @@ public class ShipmentDownClient extends Asmx8HttpClient {
                     "   </soap:Body>\n" +
                     "</soap:Envelope>";
             dispatch(endpointURL, content, "OP007031");
+            return nameValuePair;
         }
     }
 
     private class UpdateBox implements CtosAccessor {
         @Override
-        public void accessXXX(Map<String, String> nameValuePair) {
-            accessUpdateBox();
+        public Map<String, String> accessXXX(Map<String, String> nameValuePair) {
+            return accessUpdateBox(nameValuePair);
         }
 
-        private synchronized void accessUpdateBox(){
+        private synchronized Map<String, String> accessUpdateBox(Map<String, String> nameValuePair){
             String content = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:tem=\"http://tempuri.org/\">\n" +
                     "   <soap:Header/>\n" +
                     "   <soap:Body>\n" +
@@ -74,15 +73,16 @@ public class ShipmentDownClient extends Asmx8HttpClient {
                     "   </soap:Body>\n" +
                     "</soap:Envelope>";
             dispatch(endpointURL, content, "OP007095");
+            return nameValuePair;
         }
     }
 
     private class UnLoad implements CtosAccessor {
         @Override
-        public void accessXXX(Map<String, String> nameValuePair) {
-            accessUnLoad();
+        public Map<String, String> accessXXX(Map<String, String> nameValuePair) {
+            return accessUnLoad(nameValuePair);
         }
-        private synchronized void accessUnLoad(){
+        private synchronized Map<String, String> accessUnLoad(Map<String, String> nameValuePair){
             String content = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:tem=\"http://tempuri.org/\">\n" +
                     "   <soap:Header/>\n" +
                     "   <soap:Body>\n" +
@@ -93,6 +93,7 @@ public class ShipmentDownClient extends Asmx8HttpClient {
                     "   </soap:Body>\n" +
                     "</soap:Envelope>";
             dispatch(endpointURL, content, "OP007037");
+            return nameValuePair;
         }
     }
 

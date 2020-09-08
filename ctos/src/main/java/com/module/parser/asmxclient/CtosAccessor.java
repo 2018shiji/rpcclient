@@ -4,5 +4,5 @@ import java.util.Map;
 
 @FunctionalInterface
 public interface CtosAccessor {
-    void accessXXX(Map<String, String> nameValuePair);
+    Map<String, String> accessXXX(Map<String, String> nameValuePair);
 }

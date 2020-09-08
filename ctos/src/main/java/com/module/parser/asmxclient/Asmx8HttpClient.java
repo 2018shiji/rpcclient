@@ -15,7 +15,7 @@ import java.util.Map;
 
 
 public class Asmx8HttpClient {
-    private Map<String, String> resultMap;
+    public static Map<String, String> resultMap;
     public static CloseableHttpClient httpclient = HttpClients.createDefault();
     public static final String endpointURL = "http://10.128.13.27:6001/Service.asmx";
     public static final String endpointURLTest = "http://10.128.13.27:6003/Service.asmx";

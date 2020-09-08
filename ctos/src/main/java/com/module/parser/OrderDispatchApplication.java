@@ -1,5 +1,7 @@
 package com.module.parser;
 
+import com.module.parser.asmxclient.ShipmentDownClient;
+import com.module.parser.asmxclient.ShipmentUpClient;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -8,6 +10,9 @@ public class OrderDispatchApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(OrderDispatchApplication.class, args);
+        ShipmentDownClient shipmentDownClient = new ShipmentDownClient();
+        ShipmentUpClient shipmentUpClient = new ShipmentUpClient();
+        System.out.println(shipmentDownClient + "\t" + shipmentUpClient);
     }
 
 }
