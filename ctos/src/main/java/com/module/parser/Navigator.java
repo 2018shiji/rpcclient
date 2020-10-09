@@ -792,6 +792,7 @@ public class Navigator {
         String result3 = result2.substring(1, result2.lastIndexOf("}")).replaceAll("\\s*", "");
         System.out.println("------------final input string----------" + result3);
 
+
         VesselStructResult returnResult = null;
 //        String returnStr0 = httpClient.accessVesselStruct(result3);
 //        String returnStr = getCTOSResultString(returnStr0);
