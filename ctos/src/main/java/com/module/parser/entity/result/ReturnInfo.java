@@ -12,9 +12,9 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RETURNINFO", propOrder = {"errorCode", "errorMsg"})
 public class ReturnInfo {
-    @XmlElement(name = "ERROR_CODE", required = true)
+    @XmlElement(name = "ERRORCODE", required = true)
     public String errorCode;
-    @XmlElement(name = "ERROR_MSG", required = true)
+    @XmlElement(name = "ERRORMSG", required = true)
     public String errorMsg;
 
 }

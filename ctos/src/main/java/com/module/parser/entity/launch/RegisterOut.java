@@ -9,8 +9,8 @@ import javax.validation.constraints.AssertTrue;
 @Data
 @AllArgsConstructor
 public class RegisterOut {
-    @JSONField(name = "USER_ID")
+    @JSONField(name = "USER_ID", label = "userID")
     private String userId;
-    @JSONField(name = "TICKET_ID")
+    @JSONField(name = "TICKET_ID", label = "ticketID")
     private String ticketId;
 }

@@ -10,15 +10,15 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class UpdateBox {
-    @JSONField(name = "CONTAINERID")
+public class UpdateDamageBox {
+    @JSONField(name = "CONTAINERID", label = "containerID")
     private String containerId;
-    @JSONField(name = "TABLEPARAMS")
+    @JSONField(name = "TABLEPARAMS", label = "tableParams")
     private String tableParams;
-    @JSONField(name = "TICKET_ID")
+    @JSONField(name = "TICKET_ID", label = "ticketID")
     private String ticket_id;
-    @JSONField(name = "DAMAGECODE")
+    @JSONField(name = "DAMAGECODE", label = "damageCode")
     private String damageCode;
-    @JSONField(name = "DAMAGEEMEMO")
+    @JSONField(name = "DAMAGEEMEMO", label = "damageEmemo")
     private String damageEmemo;
 }

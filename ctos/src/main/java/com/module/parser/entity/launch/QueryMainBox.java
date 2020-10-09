@@ -10,11 +10,9 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class DeShipment {
-    @JSONField(name = "CNTRSUFFIX")
-    private String cntrSuffix;
-    @JSONField(name = "VELALIASE")
-    private String velAliase;
-    @JSONField(name = "TICKET_ID")
+public class QueryMainBox {
+    @JSONField(name = "CONTAINERNO", label = "containerNo")
+    private String containerNo;
+    @JSONField(name = "TICKET_ID", label = "ticketID")
     private String ticket_id;
 }

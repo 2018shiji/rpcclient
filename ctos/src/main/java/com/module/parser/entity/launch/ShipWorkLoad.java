@@ -4,11 +4,15 @@ import com.alibaba.fastjson.annotation.JSONField;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class VesselSchedule {
+public class ShipWorkLoad {
+    @JSONField(name = "VELALIASE", label = "velAliase")
+    private String velAliase;
     @JSONField(name = "TICKET_ID", label = "ticketID")
-    private String ticketId;
+    private String ticket_id;
 }

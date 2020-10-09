@@ -3,16 +3,17 @@ package com.module.parser.entity.result;
 import lombok.Data;
 
 import javax.xml.bind.annotation.*;
+import java.util.List;
 
 @Data
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "CTOSRESULT")
 @XmlType(name = "CTOSRESULT", propOrder = {"returnInfo", "dataTable"})
-public class VesselInitResult {
+public class ShipmentTaskInitResult {
     @XmlElement(name = "RETURNiNFO", required = true)
     private ReturnInfo returnInfo;
     @XmlElement(name = "OP007030", required = true)
-    private DataTable dataTable;
+    private List<DataTable> dataTable;
 
     @Data
     @XmlAccessorType(XmlAccessType.FIELD)

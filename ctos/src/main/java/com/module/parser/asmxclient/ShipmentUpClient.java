@@ -3,80 +3,100 @@ package com.module.parser.asmxclient;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 public class ShipmentUpClient extends Asmx8HttpClient {
 
     public List<CtosAccessor> accessors;
 
-    public void AccessShipmentUp(CtosAccessor... accessorList){
-        Map<String, String> resultBefore = doSomeThingBefore();
-        initAccessors(accessorList);
-        accessors.forEach(item -> {item.accessXXX(resultBefore);});
-        doSomeThingAfter();
-    }
-
-    public Map<String, String> doSomeThingBefore(){
-        Map<String, String> resultBefore = super.doSomeThingBefore();
+    public String doSomeThingBefore(){
+        String resultBefore = super.doSomeThingBefore();
         return resultBefore;
     }
 
-    public Map<String, String> doSomeThingAfter(){
-        Map<String, String> resultAfter = super.doSomeThingAfter();
+    public String AccessShipmentUp(CtosAccessor... accessorList){
+        initAccessors(accessorList);
+        accessors.forEach(item -> {item.accessXXX(resultMap);});
+        return resultMap;
+    }
+
+    public String doSomeThingAfter(){
+        String resultAfter = super.doSomeThingAfter();
         return resultAfter;
     }
 
     private void initAccessors(CtosAccessor... accessorList){
         accessors = new ArrayList<>();
         if(accessorList == null || accessorList.length == 0){
-            accessors.add(new FindBoxOrder());
-            accessors.add(new Shipment());
+            accessors.add(new FindBoxOrderClient());
+            accessors.add(new ShipmentUpRegClient());
         }else {
             Arrays.stream(accessorList).forEach(item -> {accessors.add(item);});
         }
 
     }
 
-    private class FindBoxOrder implements CtosAccessor{
+    public class FindBoxOrderClient implements CtosAccessor{
         @Override
-        public Map<String, String> accessXXX(Map<String, String> nameValuePair) {
-            return accessFindBoxOrder(nameValuePair);
+        public String accessXXX(String returnStr) {
+            return accessFindBoxOrder(returnStr);
         }
 
-        private synchronized Map<String, String> accessFindBoxOrder(Map<String, String> nameValuePair){
+        public synchronized String accessFindBoxOrder(String returnStr){
             String content = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:tem=\"http://tempuri.org/\">\n" +
                     "   <soap:Header/>\n" +
                     "   <soap:Body>\n" +
                     "      <tem:CP007032>\n" +
                     "         <!--Optional:-->\n" +
                     "         \n" +
-                    "      <tem:paras></tem:paras></tem:CP007032>\n" +
+                    "      <tem:paras>" + returnStr + "</tem:paras></tem:CP007032>\n" +
                     "   </soap:Body>\n" +
                     "</soap:Envelope>";
             dispatch(endpointURL, content, "CP007032");
-            return nameValuePair;
+            return returnStr;
         }
     }
 
-    private class Shipment implements CtosAccessor {
+    public class ShipmentUpRegClient implements CtosAccessor {
         @Override
-        public Map<String, String> accessXXX(Map<String, String> nameValuePair) {
-            return accessShipment(nameValuePair);
+        public String accessXXX(String returnStr) {
+            return accessShipmentUpReg(returnStr);
         }
 
-        private synchronized Map<String, String> accessShipment(Map<String, String> nameValuePair){
+        public synchronized String accessShipmentUpReg(String returnStr){
             String content = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:tem=\"http://tempuri.org/\">\n" +
                     "   <soap:Header/>\n" +
                     "   <soap:Body>\n" +
                     "      <tem:OP007036>\n" +
                     "         <!--Optional:-->\n" +
                     "         \n" +
-                    "      <tem:paras></tem:paras></tem:OP007036>\n" +
+                    "      <tem:paras>" + returnStr + "</tem:paras></tem:OP007036>\n" +
                     "   </soap:Body>\n" +
                     "</soap:Envelope>";
             dispatch(endpointURL, content, "OP007036");
-            return nameValuePair;
+            return returnStr;
         }
     }
+
+    public class QueryShipUpClient implements CtosAccessor {
+        @Override
+        public String accessXXX(String returnStr) {
+            return accessQueryShipUp(returnStr);
+        }
+
+        public synchronized String accessQueryShipUp(String returnStr){
+            String content = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:tem=\"http://tempuri.org/\">\n" +
+                    "   <soap:Header/>\n" +
+                    "   <soap:Body>\n" +
+                    "      <tem:OP004042>\n" +
+                    "         <!--Optional:-->\n" +
+                    "         \n" +
+                    "      <tem:paras>" + returnStr + "</tem:paras></tem:OP004042>\n" +
+                    "   </soap:Body>\n" +
+                    "</soap:Envelope>";
+            dispatch(endpointURL, content, "OP004042");
+            return returnStr;
+        }
+    }
+    
 
 }

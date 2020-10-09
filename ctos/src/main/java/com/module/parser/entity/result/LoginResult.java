@@ -1,5 +1,6 @@
 package com.module.parser.entity.result;
 
+import com.module.parser.reflect.VueField;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,42 +13,47 @@ import java.util.List;
 @ToString
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "CTOSRESULT")
-@XmlType(name = "LoginResult", propOrder = {"returnInfo", "dataTables", "ticketId"})
+@XmlType(name = "CTOSRESULT", propOrder = {"returnInfo", "dataTable"})
 public class LoginResult {
     @XmlElement(name = "RETURNINFO", required = true)
     private ReturnInfo returnInfo;
-    @XmlElement(name = "DATATABLE", required = true)
-    private List<DataTable> dataTables;
-    @XmlElement(name = "TICKET_ID", required = true)
-    private String ticketId;
+    @XmlElement(name = "OP007001", required = true)
+    private List<DataTable> dataTable;
+
 
     @Data
     @XmlAccessorType(XmlAccessType.FIELD)
-    @XmlType(name = "DataTable", propOrder = {"name", "record"})
+    @XmlType(name = "OP007001", propOrder = {"terminalDevice", "ticketId"})
     public static class DataTable {
-        @XmlAttribute(name = "NAME", required = true)
-        private String name;
-        @XmlElement(name = "RECORD", required = true)
-        private Record record;
+        @XmlElement(name = "TD_TERMINALDEVICE", required = true)
+        private TerminalDevice terminalDevice;
+        @XmlElement(name = "TICKET_ID", required = true)
+        @VueField(label = "ticketId")
+        private String ticketId;
     }
 
     @Data
     @XmlAccessorType(XmlAccessType.FIELD)
-    @XmlType(name = "Record")
+    @XmlType(name = "TD_TERMINALDEVICE")
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class Record {
-        @XmlAttribute(name = "DEVICENO", required = true)
+    public static class TerminalDevice {
+        @XmlElement(name = "DEVICENO", required = true)
+        @VueField(label = "deviceNo", sortable = true)
         private String deviceNo;
-        @XmlAttribute(name = "DEVICEMTYPE", required = true)
+        @XmlElement(name = "DEVICEMTYPE", required = true)
+        @VueField(label = "deviceMType")
         private String deviceMType;
-        @XmlAttribute(name = "WORKTYPE", required = true)
+        @XmlElement(name = "WORKTYPE", required = true)
+        @VueField(label = "workType")
         private String workType;
         /** 设备是否暂停 */
-        @XmlAttribute(name = "ISHALT", required = true)
+        @XmlElement(name = "ISHALT", required = true)
+        @VueField(label = "isHalt")
         private boolean isHalt;
         /** 限载重量 */
-        @XmlAttribute(name = "MOVECAPACITY", required = true)
+        @XmlElement(name = "MOVECAPACITY", required = true)
+        @VueField(label = "moveCapacity")
         private String moveCapacity;
     }
 }

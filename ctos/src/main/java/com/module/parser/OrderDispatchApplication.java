@@ -10,9 +10,6 @@ public class OrderDispatchApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(OrderDispatchApplication.class, args);
-        ShipmentDownClient shipmentDownClient = new ShipmentDownClient();
-        ShipmentUpClient shipmentUpClient = new ShipmentUpClient();
-        System.out.println(shipmentDownClient + "\t" + shipmentUpClient);
     }
 
 }

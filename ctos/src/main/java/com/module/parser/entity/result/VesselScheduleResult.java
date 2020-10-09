@@ -1,48 +1,51 @@
 package com.module.parser.entity.result;
 
+import com.module.parser.reflect.VueField;
 import lombok.Data;
+import lombok.ToString;
 
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.*;
 import java.util.List;
 
 @Data
+@ToString
+@XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "CTOSRESULT")
+@XmlType(name = "CTOSRESULT", propOrder = {"returnInfo", "dataTable"})
 public class VesselScheduleResult {
     @XmlElement(name = "RETURNINFO")
     private ReturnInfo returnInfo;
-    @XmlElement(name = "DATATABLE")
-    private List<DataTable> dataTables;
-
-
+    @XmlElement(name = "VM002001")
+    private List<DataTable> dataTable;
 
     @Data
-    private class DataTable {
-        @XmlAttribute(name = "NAME")
-        private String name;
-        @XmlElement(name = "RECORD")
-        private Record record;
-    }
-
-    @Data
-    private class Record {
-        @XmlAttribute(name = "VESSELALIASE")
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "VM002001")
+    public static class DataTable {
+        @XmlElement(name = "VESSELALIASE")
+        @VueField(label = "vesselAlias")
         private String vesselAlias;
-        @XmlAttribute(name = "EVESSELNAME")
+        @XmlElement(name = "EVESSELNAME")
+        @VueField(label = "eVesselName")
         private String eVesselName;
-        @XmlAttribute(name = "CVESSELNAME")
+        @XmlElement(name = "CVESSELNAME")
+        @VueField(label = "cVesselName")
         private String cVesselName;
-        @XmlAttribute(name = "INBOUNDVOY")
+        @XmlElement(name = "INBOUNDVOY")
+        @VueField(label = "inBoundVoy", sortable = true)
         private String inBoundVoy;//进口航次
-        @XmlAttribute(name = "OUTBOUNDVOY")
+        @XmlElement(name = "OUTBOUNDVOY")
+        @VueField(label = "outBoundVoy", sortable = true)
         private String outBoundVoy;//出口航次
 
-        @XmlAttribute(name = "VESSELTYPE")
+        @XmlElement(name = "VESSELTYPE")
+        @VueField(label = "vesselType")
         private String vesselType;//船舶类型，B-班轮/S-驳船
-        @XmlAttribute(name = "BERTHNO")
+        @XmlElement(name = "BERTHNO")
+        @VueField(label = "berthNo", sortable = true)
         private String berthNo;//实际靠泊2泊位号
-        @XmlAttribute(name = "STATE")
+        @XmlElement(name = "STATE")
+        @VueField(label = "state")
         private String state;//状态：A-已激活 C-已取消 I-已关闭 O-已取消靠泊
     }
 

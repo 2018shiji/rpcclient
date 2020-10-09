@@ -11,14 +11,14 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Login {
-    @JSONField(name = "USERNAME")
+    @JSONField(name = "USERNAME", label = "userName")
     private String userName;
-    @JSONField(name = "PASSWORD")
+    @JSONField(name = "PASSWORD", label = "password")
     private String password;
     /** 无线终端编号 */
-    @JSONField(name = "TERMINALNO")
+    @JSONField(name = "TERMINALNO", label = "terminalNo")
     private int terminalNo;
-    @JSONField(name = "CLIENT_ID")
+    @JSONField(name = "CLIENT_ID", label = "clientIP")
     private String clientIp;
 
 }

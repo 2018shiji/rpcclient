@@ -6,23 +6,21 @@ public class ShipmentDownClient extends Asmx8HttpClient {
 
     public List<CtosAccessor> accessors;
 
-    public void accessShipmentDown(CtosAccessor... accessorList){
-        Map<String, String> resultBefore = new HashMap<>(doSomeThingBefore());
-        initAccessors(accessorList);
-        accessors.forEach(item -> {item.accessXXX(resultBefore);});
-        doSomeThingAfter();
-    }
-
-    public Map<String, String> doSomeThingBefore(){
-        Map<String, String> resultBefore = super.doSomeThingBefore();
+    public String doSomeThingBefore(){
+        String resultBefore = super.doSomeThingBefore();
         return resultBefore;
     }
 
-    public Map<String, String> doSomeThingAfter(){
-        Map<String, String> resultAfter = super.doSomeThingAfter();
-        return resultAfter;
+    public String accessShipmentDown(CtosAccessor... accessorList){
+        initAccessors(accessorList);
+        accessors.forEach(item -> {item.accessXXX(resultMap);});
+        return resultMap;
     }
 
+    public String doSomeThingAfter(){
+        String resultAfter = super.doSomeThingAfter();
+        return resultAfter;
+    }
 
     private void initAccessors(CtosAccessor... accessorList){
         accessors = new ArrayList<>();
@@ -35,65 +33,65 @@ public class ShipmentDownClient extends Asmx8HttpClient {
         }
     }
 
-    private class DeShipment implements CtosAccessor {
+    public class DeShipment implements CtosAccessor {
         @Override
-        public Map<String, String> accessXXX(Map<String, String> nameValuePair) {
-            return accessDeShipment(nameValuePair);
+        public String accessXXX(String returnStr) {
+            return accessDeShipment(returnStr);
         }
 
-        private synchronized Map<String, String> accessDeShipment(Map<String, String> nameValuePair){
+        public synchronized String accessDeShipment(String returnStr){
             String content = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:tem=\"http://tempuri.org/\">\n" +
                     "   <soap:Header/>\n" +
                     "   <soap:Body>\n" +
                     "      <tem:OP007031>\n" +
                     "         <!--Optional:-->\n" +
                     "         \n" +
-                    "      <tem:paras></tem:paras></tem:OP007031>\n" +
+                    "      <tem:paras>" + returnStr + "</tem:paras></tem:OP007031>\n" +
                     "   </soap:Body>\n" +
                     "</soap:Envelope>";
             dispatch(endpointURL, content, "OP007031");
-            return nameValuePair;
+            return returnStr;
         }
     }
 
-    private class UpdateBox implements CtosAccessor {
+    public class UpdateBox implements CtosAccessor {
         @Override
-        public Map<String, String> accessXXX(Map<String, String> nameValuePair) {
-            return accessUpdateBox(nameValuePair);
+        public String accessXXX(String returnStr) {
+            return accessUpdateBox(returnStr);
         }
 
-        private synchronized Map<String, String> accessUpdateBox(Map<String, String> nameValuePair){
+        public synchronized String accessUpdateBox(String returnStr){
             String content = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:tem=\"http://tempuri.org/\">\n" +
                     "   <soap:Header/>\n" +
                     "   <soap:Body>\n" +
                     "      <tem:OP007095>\n" +
                     "         <!--Optional:-->\n" +
                     "         \n" +
-                    "      <tem:paras></tem:paras></tem:OP007095>\n" +
+                    "      <tem:paras>" + returnStr + "</tem:paras></tem:OP007095>\n" +
                     "   </soap:Body>\n" +
                     "</soap:Envelope>";
             dispatch(endpointURL, content, "OP007095");
-            return nameValuePair;
+            return returnStr;
         }
     }
 
-    private class UnLoad implements CtosAccessor {
+    public class UnLoad implements CtosAccessor {
         @Override
-        public Map<String, String> accessXXX(Map<String, String> nameValuePair) {
-            return accessUnLoad(nameValuePair);
+        public String accessXXX(String returnStr) {
+            return accessUnLoad(returnStr);
         }
-        private synchronized Map<String, String> accessUnLoad(Map<String, String> nameValuePair){
+        public synchronized String accessUnLoad(String returnStr){
             String content = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:tem=\"http://tempuri.org/\">\n" +
                     "   <soap:Header/>\n" +
                     "   <soap:Body>\n" +
                     "      <tem:OP007037>\n" +
                     "         <!--Optional:-->\n" +
                     "         \n" +
-                    "      <tem:paras></tem:paras></tem:OP007037>\n" +
+                    "      <tem:paras>" + returnStr + "</tem:paras></tem:OP007037>\n" +
                     "   </soap:Body>\n" +
                     "</soap:Envelope>";
             dispatch(endpointURL, content, "OP007037");
-            return nameValuePair;
+            return returnStr;
         }
     }
 
