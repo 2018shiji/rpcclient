@@ -12,7 +12,7 @@ import java.util.List;
 
 @Component
 public class FieldReflect2 {
-    static List<Format2> format2s;
+    private List<Format2> format2s;
 
     public List<Format2> getFieldReflect(Class clazz) {
         format2s = new ArrayList<>();

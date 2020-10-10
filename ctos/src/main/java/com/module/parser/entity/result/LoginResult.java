@@ -20,7 +20,6 @@ public class LoginResult {
     @XmlElement(name = "OP007001", required = true)
     private List<DataTable> dataTable;
 
-
     @Data
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "OP007001", propOrder = {"terminalDevice", "ticketId"})
@@ -28,7 +27,7 @@ public class LoginResult {
         @XmlElement(name = "TD_TERMINALDEVICE", required = true)
         private TerminalDevice terminalDevice;
         @XmlElement(name = "TICKET_ID", required = true)
-        @VueField(label = "ticketId")
+        @VueField(label = "会话编码")
         private String ticketId;
     }
 
@@ -39,21 +38,21 @@ public class LoginResult {
     @AllArgsConstructor
     public static class TerminalDevice {
         @XmlElement(name = "DEVICENO", required = true)
-        @VueField(label = "deviceNo", sortable = true)
+        @VueField(label = "设备号", sortable = true)
         private String deviceNo;
         @XmlElement(name = "DEVICEMTYPE", required = true)
-        @VueField(label = "deviceMType")
+        @VueField(label = "设备类型")
         private String deviceMType;
         @XmlElement(name = "WORKTYPE", required = true)
-        @VueField(label = "workType")
+        @VueField(label = "堆场作业")
         private String workType;
         /** 设备是否暂停 */
         @XmlElement(name = "ISHALT", required = true)
-        @VueField(label = "isHalt")
+        @VueField(label = "设备是否暂停")
         private boolean isHalt;
         /** 限载重量 */
         @XmlElement(name = "MOVECAPACITY", required = true)
-        @VueField(label = "moveCapacity")
+        @VueField(label = "限载重量")
         private String moveCapacity;
     }
 }

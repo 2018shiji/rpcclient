@@ -30,52 +30,52 @@ public class BoxResult {
     @XmlType(name = "CM_CONTAINERONSHIP")
     public static class ContainerOnShip{
         @XmlElement(name = "CONTAINERNO")
-        @VueField(label = "containerNo", sortable = true)
+        @VueField(label = "箱号", sortable = true)
         private String containerNo;
         @XmlElement(name = "CONTAINERID")
-        @VueField(label = "containerId", sortable = true)
+        @VueField(label = "箱ID", sortable = true)
         private String containerId;
         @XmlElement(name = "ISOCODE")
-        @VueField(label = "test", sortable = true)
+        @VueField(label = "ISO", sortable = true)
         private String isoCode;
         @XmlElement(name = "CONTAINERTYPE")
-        @VueField(label = "containerType")
+        @VueField(label = "箱型")
         private String containerType;
         @XmlElement(name = "CONTAINERHEIGHT")
-        @VueField(label = "containerHeight")
+        @VueField(label = "高度")
         private String containerHeight;
         @XmlElement(name = "CONTAINERSIZE")
-        @VueField(label = "containerSize")
+        @VueField(label = "尺寸")
         private String containerSize;
         @XmlElement(name = "CONTAINEROWNER")
-        @VueField(label = "containerOwner")
+        @VueField(label = "箱主")
         private String containerOwner;
         @XmlElement(name = "EMPTYFULL")
-        @VueField(label = "emptyFull")
+        @VueField(label = "空重")
         private String emptyFull;
         @XmlElement(name = "INAIM")
-        @VueField(label = "inAim")
+        @VueField(label = "进港类型")
         private String inAim;
         @XmlElement(name = "ISREEF")
-        @VueField(label = "isReef")
+        @VueField(label = "冷藏")
         private String isReef;
         @XmlElement(name = "ISIMDG")
-        @VueField(label = "isImdg")
+        @VueField(label = "危品")
         private String isImdg;
         @XmlElement(name = "ISOVERTOP")
-        @VueField(label = "isOverTop")
+        @VueField(label = "超限")
         private String isOverTop;
         @XmlElement(name = "ISDAMAGE")
-        @VueField(label = "isDamage")
+        @VueField(label = "残损")
         private String isDamage;
         @XmlElement(name = "ISBIND")
-        @VueField(label = "isBind")
+        @VueField(label = "绑扎")
         private String isBind;
         @XmlElement(name = "OUTTYPE")
-        @VueField(label = "outType")
+        @VueField(label = "指令工作点")
         private String outType;
         @XmlElement(name = "INVESSELCELL")
-        @VueField(label = "inVesselCell")
+        @VueField(label = "船上位置")
         private String inVesselCell;
     }
 }

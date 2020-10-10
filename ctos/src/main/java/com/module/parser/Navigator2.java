@@ -1,5 +1,6 @@
 package com.module.parser;
 
+import com.module.parser.entity.VueFieldEntity;
 import com.module.parser.entity.launch.*;
 import com.module.parser.entity.result.GetBerthMsgResult;
 import com.module.parser.reflect.FieldReflect2;

@@ -36,6 +36,8 @@ public class CTOSRESULT {
     public static final String SM003006 =
             "<CTOSRESULT>" +
                     "<RETURNINFO><ERRORCODE>0</ERRORCODE><ERRORMSG>success</ERRORMSG></RETURNINFO>" +
+                    "<SM003006><CONTRACTORCNAME>COLOMBO LOGISTICS</CONTRACTORCNAME><CONTRACTORENAME>COLOMBOLOGISTICS</CONTRACTORENAME>" +
+                    "<CONTRACTORCODE>CLB</CONTRACTORCODE><TICKET_ID></TICKET_ID></SM003006>" +
             "</CTOSRESULT>";
 
     public static final String SM001010 =

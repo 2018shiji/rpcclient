@@ -18,16 +18,8 @@ public class GetContractorResult {
 
     @Data
     @XmlAccessorType(XmlAccessType.FIELD)
-    @XmlType(name = "SM003006", propOrder = {"contractorInfo"})
+    @XmlType(name = "SM003006")
     public static class DataTable{
-        @XmlElement(name = "CONTRACTORINFO", required = true)
-        private ContractorInfo contractorInfo;
-    }
-
-    @Data
-    @XmlAccessorType(XmlAccessType.FIELD)
-    @XmlType(name = "CONTRACTORINFO")
-    public static class ContractorInfo{
         @XmlElement(name = "CONTRACTORCNAME", required = true)
         @VueField(label = "contractorCName")
         private String contractorCName;
@@ -37,5 +29,8 @@ public class GetContractorResult {
         @XmlElement(name = "CONTRACTORCODE", required = true)
         @VueField(label = "contractorCode")
         private String contractorCode;
+        @XmlElement(name = "TICKET_ID")
+        private String ticket_Id;
     }
+
 }

@@ -25,7 +25,7 @@ public class RegisterResult {
     @XmlType(name = "SM001001", propOrder = {"ticketId"})
     public static class DataTable{
         @XmlElement(name = "TICKET_ID", required = true)
-        @VueField(label = "ticketId")
+        @VueField(label = "会话编码")
         private String ticketId;
     }
 }

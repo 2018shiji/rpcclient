@@ -18,16 +18,8 @@ public class GetBerthMsgResult {
 
     @Data
     @XmlAccessorType(XmlAccessType.FIELD)
-    @XmlType(name = "SM003007", propOrder = {"portBerth"})
+    @XmlType(name = "SM003007")
     public static class DataTable{
-        @XmlElement(name = "VS_PORTBERTH", required = true)
-        private PortBerth portBerth;
-    }
-
-    @Data
-    @XmlAccessorType(XmlAccessType.FIELD)
-    @XmlType(name = "VS_PORTBERTH")
-    public static class PortBerth{
         @XmlElement(name = "ID")
         @VueField(label = "id", sortable = true)
         private String id;
@@ -37,5 +29,8 @@ public class GetBerthMsgResult {
         @XmlElement(name = "BERTHNO")
         @VueField(label = "berthNo", sortable = true)
         private String berthNo;
+        @XmlElement(name = "TICKET_ID")
+        private String ticket_Id;
     }
+
 }

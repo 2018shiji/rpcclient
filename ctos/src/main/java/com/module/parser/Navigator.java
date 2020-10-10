@@ -33,14 +33,14 @@ public class Navigator {
 
     /** 船上箱位信息 OTS001008 */
     @ResponseBody
-    @RequestMapping("getBoxResultFormat")
+    @RequestMapping("getBoxPositionResultFormat")
     public List<FieldReflect.Format> getBoxResultFormat(){
         List<FieldReflect.Format> fieldReflect = reflect.getFieldReflect(BoxResult.class);
         return fieldReflect;
     }
 
     @ResponseBody
-    @RequestMapping("getBoxResult")
+    @RequestMapping("getBoxPositionResult")
     public String getBoxResult(@RequestBody Box box1){
         Box box = new Box("111", "1", "ticket_id");
         String result1 = JSON.toJSONString(box1, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
@@ -79,7 +79,7 @@ public class Navigator {
 
     @ResponseBody
     @RequestMapping("getFindBoxOrderResult")
-    public String getFindBoxOrderResult(FindBoxOrder findBoxOrder1){
+    public String getFindBoxOrderResult(@RequestBody FindBoxOrder findBoxOrder1){
         FindBoxOrder findBoxOrder = new FindBoxOrder("111", "1", "1", "ticket_id");
         String result1 = JSON.toJSONString(findBoxOrder1, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
         String result2 = result1.replaceAll("\'(\\w+)\'(\\s*:\\s*)", "$1$2");
@@ -109,16 +109,16 @@ public class Navigator {
 
     /** 根据箱号查找箱 CM005001 */
     @ResponseBody
-    @RequestMapping("getFindBoxResultFormat")
+    @RequestMapping("getBoxByNumResultFormat")
     public List<FieldReflect.Format> getFindBoxResultFormat(){
         List<FieldReflect.Format> fieldReflect = reflect.getFieldReflect(FindBoxResult.class);
         return fieldReflect;
     }
 
     @ResponseBody
-    @RequestMapping("getFindBoxResult")
-    public String getFindBoxResult(FindBox findBox1){
-        FindBox findBox = new FindBox("111","ticket_id");
+    @RequestMapping("getBoxByNumResult")
+    public String getFindBoxResult(@RequestBody FindBox findBox1){
+//        FindBox findBox = new FindBox("111","ticket_id");
         System.out.println(findBox1);
         String result1 = JSON.toJSONString(findBox1, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
         String result2 = result1.replaceAll("\'(\\w+)\'(\\s*:\\s*)", "$1$2");
@@ -155,16 +155,21 @@ public class Navigator {
 
     @ResponseBody
     @RequestMapping("getBerthMsgResult")
-    public String getBerthMsgResult(GetBerthMsg getBerthMsg1){
-        GetBerthMsg getBerthMsg = new GetBerthMsg("ticket_id");
-        String result1 = JSON.toJSONString(getBerthMsg, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
+    public String getBerthMsgResult(@RequestBody GetBerthMsg getBerthMsg1){
+//        GetBerthMsg getBerthMsg = new GetBerthMsg("ticket_id");
+        System.out.println(getBerthMsg1);
+        String result1 = JSON.toJSONString(getBerthMsg1, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
         String result2 = result1.replaceAll("\'(\\w+)\'(\\s*:\\s*)", "$1$2");
-        String result3 = result2.substring(1, result2.lastIndexOf("}")).trim();
+        String result3 = result2.substring(1, result2.lastIndexOf("}")).replaceAll("\\s*", "");
+        System.out.println("------------final input string----------" + result3);
 
         GetBerthMsgResult returnResult = null;
-//        String returnStr = httpClient.accessGetBerthMsg(result3);
+        String returnStr0 = httpClient.accessGetBerthMsg(result3);
+        System.out.println("-------------+++++++++++++--------------" + returnStr0);
+        String returnStr = getCTOSResultString(returnStr0);
+        System.out.println("------------final output string----------" + returnStr);
 
-        String returnStr = CTOSRESULT.SM003007;
+//        String returnStr = CTOSRESULT.SM003007;
         try {
             StringReader reader = new StringReader(returnStr);
             JAXBContext context = JAXBContext.newInstance(GetBerthMsgResult.class);
@@ -174,8 +179,9 @@ public class Navigator {
         } catch (Exception e){
             e.printStackTrace();
         }
-        System.out.println(JSON.toJSONString(returnResult));
-        return JSON.toJSONString(returnResult);
+        String jsonString = JSON.toJSONString(returnResult);
+        System.out.println(jsonString);
+        return jsonString;
     }
 
     /** 获取承包商信息 SM003006*/
@@ -188,16 +194,21 @@ public class Navigator {
 
     @ResponseBody
     @RequestMapping("getContractorResult")
-    public String getContractorResult(GetContractor getContractor1){
-        GetContractor getContractor = new GetContractor("ticket_id");
-        String result1 = JSON.toJSONString(getContractor, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
+    public String getContractorResult(@RequestBody GetContractor getContractor1){
+//        GetContractor getContractor = new GetContractor("ticket_id");
+        System.out.println(getContractor1);
+        String result1 = JSON.toJSONString(getContractor1, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
         String result2 = result1.replaceAll("\'(\\w+)\'(\\s*:\\s*)", "$1$2");
-        String result3 = result2.substring(1, result2.lastIndexOf("}")).trim();
+        String result3 = result2.substring(1, result2.lastIndexOf("}")).replaceAll("\\s*", "");
+        System.out.println("------------final input string----------" + result3);
 
         GetContractorResult returnResult = null;
-//        String returnStr = httpClient.accessGetContractor(result3);
+        String returnStr0 = httpClient.accessGetContractor(result3);
+        System.out.println("-------------+++++++++++++--------------" + returnStr0);
+        String returnStr = getCTOSResultString(returnStr0);
+        System.out.println("------------final output string----------" + returnStr);
 
-        String returnStr = CTOSRESULT.SM003006;
+//        String returnStr = CTOSRESULT.SM003006;
         try {
             StringReader reader = new StringReader(returnStr);
             JAXBContext context = JAXBContext.newInstance(GetContractorResult.class);
@@ -207,8 +218,9 @@ public class Navigator {
         } catch (Exception e){
             e.printStackTrace();
         }
-        System.out.println(JSON.toJSONString(returnResult));
-        return JSON.toJSONString(returnResult);
+        String jsonString = JSON.toJSONString(returnResult);
+        System.out.println(jsonString);
+        return jsonString;
     }
 
     /** 获取指定角色下的用户 SM001010*/
@@ -221,16 +233,20 @@ public class Navigator {
 
     @ResponseBody
     @RequestMapping("getRoleUserResult")
-    public String getRoleUserResult(GetRoleUser getRoleUser1){
-        GetRoleUser getRoleUser = new GetRoleUser("userName", "ticket_id");
-        String result1 = JSON.toJSONString(getRoleUser, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
+    public String getRoleUserResult(@RequestBody GetRoleUser getRoleUser1){
+//        GetRoleUser getRoleUser = new GetRoleUser("userName", "ticket_id");
+        String result1 = JSON.toJSONString(getRoleUser1, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
         String result2 = result1.replaceAll("\'(\\w+)\'(\\s*:\\s*)", "$1$2");
-        String result3 = result2.substring(1, result2.lastIndexOf("}")).trim();
+        String result3 = result2.substring(1, result2.lastIndexOf("}")).replaceAll("\\s*", "");
+        System.out.println("------------final input string----------" + result3);
 
         GetRoleUserResult returnResult = null;
-//        String returnStr = httpClient.accessGetRoleUser(result3);
+        String returnStr0 = httpClient.accessGetRoleUser(result3);
+        System.out.println("-------------+++++++++++++--------------" + returnStr0);
+        String returnStr = getCTOSResultString(returnStr0);
+        System.out.println("------------final output string----------" + returnStr);
 
-        String returnStr = CTOSRESULT.SM001010;
+//        String returnStr = CTOSRESULT.SM001010;
         try {
             StringReader reader = new StringReader(returnStr);
             JAXBContext context = JAXBContext.newInstance(GetRoleUserResult.class);
@@ -240,8 +256,9 @@ public class Navigator {
         } catch (Exception e){
             e.printStackTrace();
         }
-        System.out.println(JSON.toJSONString(returnResult));
-        return JSON.toJSONString(returnResult);
+        String jsonString = JSON.toJSONString(returnResult);
+        System.out.println(jsonString);
+        return jsonString;
     }
 
     /** 获取指定岸桥下的作业指令 OP004039*/
@@ -254,16 +271,20 @@ public class Navigator {
 
     @ResponseBody
     @RequestMapping("getWorkOrderListResult")
-    public String getWorkOrderListResult(GetWorkOrderList getWorkOrderList1){
-        GetWorkOrderList getRoleUser = new GetWorkOrderList("number", "queryvalue", "ticket_id");
-        String result1 = JSON.toJSONString(getRoleUser, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
+    public String getWorkOrderListResult(@RequestBody GetWorkOrderList getWorkOrderList1){
+//        GetWorkOrderList getRoleUser = new GetWorkOrderList("number", "queryvalue", "ticket_id");
+        String result1 = JSON.toJSONString(getWorkOrderList1, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
         String result2 = result1.replaceAll("\'(\\w+)\'(\\s*:\\s*)", "$1$2");
-        String result3 = result2.substring(1, result2.lastIndexOf("}")).trim();
+        String result3 = result2.substring(1, result2.lastIndexOf("}")).replaceAll("\\s*", "");
+        System.out.println("------------final input string----------" + result3);
 
         GetWorkOrderListResult returnResult = null;
-//        String returnStr = httpClient.accessGetWorkOrderList(result3);
+        String returnStr0 = httpClient.accessGetWorkOrderList(result3);
+        System.out.println("-------------+++++++++++++--------------" + returnStr0);
+        String returnStr = getCTOSResultString(returnStr0);
+        System.out.println("------------final output string----------" + returnStr);
 
-        String returnStr = CTOSRESULT.OP004039;
+//        String returnStr = CTOSRESULT.OP004039;
         try {
             StringReader reader = new StringReader(returnStr);
             JAXBContext context = JAXBContext.newInstance(GetWorkOrderListResult.class);
@@ -273,8 +294,9 @@ public class Navigator {
         } catch (Exception e){
             e.printStackTrace();
         }
-        System.out.println(JSON.toJSONString(returnResult));
-        return JSON.toJSONString(returnResult);
+        String jsonString = JSON.toJSONString(returnResult);
+        System.out.println(jsonString);
+        return jsonString;
     }
 
     /**无线终端登录 */
@@ -287,16 +309,20 @@ public class Navigator {
 
     @ResponseBody
     @RequestMapping("getLoginResult")
-    public String getLoginResult(Login login1){
-        Login login = new Login("userName", "password", 123, "clientIp");
-        String result1 = JSON.toJSONString(login, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
+    public String getLoginResult(@RequestBody Login login1){
+//        Login login = new Login("userName", "password", 123, "clientIp");
+        String result1 = JSON.toJSONString(login1, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
         String result2 = result1.replaceAll("\'(\\w+)\'(\\s*:\\s*)", "$1$2");
-        String result3 = result2.substring(1, result2.lastIndexOf("}")).trim();
+        String result3 = result2.substring(1, result2.lastIndexOf("}")).replaceAll("\\s*", "");
+        System.out.println("------------final input string----------" + result3);
 
         LoginResult returnResult = null;
-//        String returnStr = httpClient.accessLogin(result3);
+        String returnStr0 = httpClient.accessLogin(result3);
+        System.out.println("-------------+++++++++++++--------------" + returnStr0);
+        String returnStr = getCTOSResultString(returnStr0);
+        System.out.println("------------final output string----------" + returnStr);
 
-        String returnStr = CTOSRESULT.OP007001;
+//        String returnStr = CTOSRESULT.OP007001;
         try {
             StringReader reader = new StringReader(returnStr);
             JAXBContext context = JAXBContext.newInstance(LoginResult.class);
@@ -306,8 +332,9 @@ public class Navigator {
         } catch (Exception e){
             e.printStackTrace();
         }
-        System.out.println(JSON.toJSONString(returnResult));
-        return JSON.toJSONString(returnResult);
+        String jsonString = JSON.toJSONString(returnResult);
+        System.out.println(jsonString);
+        return jsonString;
     }
 
     /** 无线终端注销 */
@@ -320,16 +347,20 @@ public class Navigator {
 
     @ResponseBody
     @RequestMapping("getLogoutResult")
-    public String getLogoutResult(Logout logout1){
-        Logout logout = new Logout("userId",123, "clientIp");
-        String result1 = JSON.toJSONString(logout, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
+    public String getLogoutResult(@RequestBody Logout logout1){
+//        Logout logout = new Logout("userId",123, "clientIp");
+        String result1 = JSON.toJSONString(logout1, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
         String result2 = result1.replaceAll("\'(\\w+)\'(\\s*:\\s*)", "$1$2");
-        String result3 = result2.substring(1, result2.lastIndexOf("}")).trim();
+        String result3 = result2.substring(1, result2.lastIndexOf("}")).replaceAll("\\s*", "");
+        System.out.println("------------final input string----------" + result3);
 
         LogoutResult returnResult = null;
-//        String returnStr = httpClient.accessLogout(result3);
+        String returnStr0 = httpClient.accessLogout(result3);
+        System.out.println("-------------+++++++++++++--------------" + returnStr0);
+        String returnStr = getCTOSResultString(returnStr0);
+        System.out.println("------------final output string----------" + returnStr);
 
-        String returnStr = CTOSRESULT.OP007002;
+//        String returnStr = CTOSRESULT.OP007002;
         try {
             StringReader reader = new StringReader(returnStr);
             JAXBContext context = JAXBContext.newInstance(LogoutResult.class);
@@ -339,8 +370,9 @@ public class Navigator {
         } catch (Exception e){
             e.printStackTrace();
         }
-        System.out.println(JSON.toJSONString(returnResult));
-        return JSON.toJSONString(returnResult);
+        String jsonString = JSON.toJSONString(returnResult);
+        System.out.println(jsonString);
+        return jsonString;
     }
 
     /** 根据子箱查询主箱信息 */
@@ -353,16 +385,21 @@ public class Navigator {
 
     @ResponseBody
     @RequestMapping("getQueryMainBoxResult")
-    public String getQueryMainBoxResult(QueryMainBox queryMainBox1){
-        QueryMainBox queryMainBox = new QueryMainBox("containerNo", "ticket_id");
-        String result1 = JSON.toJSONString(queryMainBox, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
+    public String getQueryMainBoxResult(@RequestBody QueryMainBox queryMainBox1){
+//        QueryMainBox queryMainBox = new QueryMainBox("containerNo", "ticket_id");
+        System.out.println(queryMainBox1);
+        String result1 = JSON.toJSONString(queryMainBox1, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
         String result2 = result1.replaceAll("\'(\\w+)\'(\\s*:\\s*)", "$1$2");
-        String result3 = result2.substring(1, result2.lastIndexOf("}")).trim();
+        String result3 = result2.substring(1, result2.lastIndexOf("}")).replaceAll("\\s*", "");
+        System.out.println("------------final input string----------" + result3);
 
         QueryMainBoxResult returnResult = null;
-//        String returnStr = httpClient.accessQueryMainBox(result3);
+        String returnStr0 = httpClient.accessQueryMainBox(result3);
+        System.out.println("-------------+++++++++++++--------------" + returnStr0);
+        String returnStr = getCTOSResultString(returnStr0);
+        System.out.println("------------final output string----------" + returnStr);
 
-        String returnStr = CTOSRESULT.CM005009;
+//        String returnStr = CTOSRESULT.CM005009;
         try {
             StringReader reader = new StringReader(returnStr);
             JAXBContext context = JAXBContext.newInstance(QueryMainBoxResult.class);
@@ -372,8 +409,9 @@ public class Navigator {
         } catch (Exception e){
             e.printStackTrace();
         }
-        System.out.println(JSON.toJSONString(returnResult));
-        return JSON.toJSONString(returnResult);
+        String jsonString = JSON.toJSONString(returnResult);
+        System.out.println(jsonString);
+        return jsonString;
     }
 
 
@@ -386,11 +424,12 @@ public class Navigator {
 
     @ResponseBody
     @RequestMapping("getQueryShipUpResult")
-    public String getQueryShipUpResult(){
-        QueryShipUp queryShipUp = new QueryShipUp("1", "1", "ticketId");
-        String result1 = JSON.toJSONString(queryShipUp, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
+    public String getQueryShipUpResult(@RequestBody QueryShipUp queryShipUp1){
+//        QueryShipUp queryShipUp = new QueryShipUp("1", "1", "ticketId");
+        String result1 = JSON.toJSONString(queryShipUp1, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
         String result2 = result1.replaceAll("\'(\\w+)\'(\\s*:\\s*)", "$1$2");
-        String result3 = result2.substring(1, result2.lastIndexOf("}")).trim();
+        String result3 = result2.substring(1, result2.lastIndexOf("}")).replaceAll("\\s*", "");
+        System.out.println("------------final input string----------" + result3);
 
         ShipmentUpClient shipmentUpClient = new ShipmentUpClient();
         ShipmentUpClient.QueryShipUpClient queryShipUpClient = shipmentUpClient.new QueryShipUpClient();
@@ -438,11 +477,13 @@ public class Navigator {
             JAXBContext context = JAXBContext.newInstance(RegisterResult.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
             returnResult = (RegisterResult) unmarshaller.unmarshal(reader);
-            System.out.println("--------------" + returnResult);
+
         } catch (Exception e){
             e.printStackTrace();
         }
-        return JSON.toJSONString(returnResult);
+        String jsonString = JSON.toJSONString(returnResult);
+        System.out.println(jsonString);
+        return jsonString;
     }
 
     /** 注销 */
@@ -455,15 +496,15 @@ public class Navigator {
 
     @ResponseBody
     @RequestMapping("getRegisterOutResult")
-    public String getRegisterOutResult(RegisterOut registerOut1){
-        RegisterOut registerOut = new RegisterOut("DYW", "ticketId");
-        String result1 = JSON.toJSONString(registerOut, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
+    public String getRegisterOutResult(@RequestBody RegisterOut registerOut1){
+//        RegisterOut registerOut = new RegisterOut("DYW", "ticketId");
+        String result1 = JSON.toJSONString(registerOut1, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
         String result2 = result1.replaceAll("\'(\\w+)\'(\\s*:\\s*)", "$1$2");
         String result3 = result2.substring(1, result2.lastIndexOf("}")).trim();
 
         RegisterOutResult returnResult = null;
-//        String returnStr = httpClient.accessRegisterOut(result3);
-        String returnStr = CTOSRESULT.SM001002;
+        String returnStr = httpClient.accessRegisterOut(result3);
+//        String returnStr = CTOSRESULT.SM001002;
         try{
             StringReader reader = new StringReader(returnStr);
             JAXBContext context = JAXBContext.newInstance(RegisterOutResult.class);
@@ -794,13 +835,13 @@ public class Navigator {
 
 
         VesselStructResult returnResult = null;
-//        String returnStr0 = httpClient.accessVesselStruct(result3);
-//        String returnStr = getCTOSResultString(returnStr0);
-//        System.out.println("------------final output string----------" + returnStr.length());
-//        ResultFile.saveToFile(returnStr);
+        String returnStr0 = httpClient.accessVesselStruct(result3);
+        String returnStr = getCTOSResultString(returnStr0);
+        System.out.println("------------final output string----------" + returnStr.length());
+        ResultFile.saveToFile(returnStr);
         try{
-            File file = new File("E:\\result\\vesselStruct.txt");
-            String returnStr = Files.asCharSource(file, StandardCharsets.UTF_8).read();
+//            File file = new File("E:\\result\\vesselStruct.txt");
+//            String returnStr = Files.asCharSource(file, StandardCharsets.UTF_8).read();
             StringReader reader = new StringReader(returnStr);
             JAXBContext context = JAXBContext.newInstance(VesselStructResult.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
