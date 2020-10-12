@@ -28,7 +28,7 @@ public class Wsdl8CXF {
 
     private static void testDoLogin(Client client){
         try{
-            Login login = new Login("DYW", "222", 123, "333");
+            Login login = new Login("DYW", "222", "123", "333", "666");
             String loginJsonStr = JSON.toJSONString(login);
             Object[] objects = client.invoke("doLogin", loginJsonStr);
             System.out.println("返回数据：" + objects[0]);
@@ -39,7 +39,7 @@ public class Wsdl8CXF {
 
     private static void testDoLoginResultReal(Client client){
         try{
-            Login login = new Login();
+            Login login = new Login("1","2","3","4","5");
             String loginJsonStr = JSON.toJSONString(login);
             Object[] objects = client.invoke("doLoginResultReal", login);
             System.out.println("返回数据：" + objects[0]);

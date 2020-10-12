@@ -13,7 +13,7 @@ public class Register {
     private String userId;
     @JSONField(name = "PASSWORD", label = "passWord")
     private String password;
-    @JSONField(name = "CLIENTID", label = "clientID")
-    private String clientId;
+    @JSONField(name = "CLIENTIP", label = "clientIP")
+    private String clientIP;
 
 }

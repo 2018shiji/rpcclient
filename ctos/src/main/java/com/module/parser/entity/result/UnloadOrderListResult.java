@@ -19,16 +19,8 @@ public class UnloadOrderListResult {
 
     @Data
     @XmlAccessorType(XmlAccessType.FIELD)
-    @XmlType(name = "OP004041", propOrder = {"workItemDis"})
+    @XmlType(name = "OP004041")
     public static class DataTable{
-        @XmlElement(name = "WI_WORKITEM_DIS")
-        private WorkItemDis workItemDis;
-    }
-
-    @Data
-    @XmlAccessorType(XmlAccessType.FIELD)
-    @XmlType(name = "WI_WORKITEM_DIS")
-    public static class WorkItemDis{
         @XmlElement(name = "CONTAINERNO")
         @VueField(label = "containerNo", sortable = true)
         private String containerNo;
@@ -101,6 +93,6 @@ public class UnloadOrderListResult {
         @XmlElement(name = "RELASOURCEPOS")
         @VueField(label = "relaSourcePos")
         private String relaSourcePos;
-
     }
+
 }

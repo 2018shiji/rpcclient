@@ -20,14 +20,6 @@ public class ShipWorkLoadResult {
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "OP004040")
     public static class DataTable{
-        @XmlElement(name = "WI_WORKITEMS")
-        private WorkItem workItem;
-    }
-
-    @Data
-    @XmlAccessorType(XmlAccessType.FIELD)
-    @XmlType(name = "WI_WORKITEMS")
-    public static class WorkItem{
         @XmlElement(name = "WORKPOINTNO")
         @VueField(label = "workPointNo", sortable = true)
         private String workPointNo;
@@ -44,4 +36,5 @@ public class ShipWorkLoadResult {
         @VueField(label = "countSum", sortable = true)
         private String countSum;
     }
+
 }

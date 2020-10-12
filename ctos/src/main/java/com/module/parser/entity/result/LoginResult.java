@@ -22,21 +22,8 @@ public class LoginResult {
 
     @Data
     @XmlAccessorType(XmlAccessType.FIELD)
-    @XmlType(name = "OP007001", propOrder = {"terminalDevice", "ticketId"})
+    @XmlType(name = "OP007001")
     public static class DataTable {
-        @XmlElement(name = "TD_TERMINALDEVICE", required = true)
-        private TerminalDevice terminalDevice;
-        @XmlElement(name = "TICKET_ID", required = true)
-        @VueField(label = "会话编码")
-        private String ticketId;
-    }
-
-    @Data
-    @XmlAccessorType(XmlAccessType.FIELD)
-    @XmlType(name = "TD_TERMINALDEVICE")
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class TerminalDevice {
         @XmlElement(name = "DEVICENO", required = true)
         @VueField(label = "设备号", sortable = true)
         private String deviceNo;
@@ -54,5 +41,8 @@ public class LoginResult {
         @XmlElement(name = "MOVECAPACITY", required = true)
         @VueField(label = "限载重量")
         private String moveCapacity;
+        @XmlElement(name = "TICKET_ID", required = true)
+        @VueField(label = "会话编码")
+        private String ticketId;
     }
 }

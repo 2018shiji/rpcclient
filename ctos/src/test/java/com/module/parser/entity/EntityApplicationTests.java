@@ -3,10 +3,7 @@ package com.module.parser.entity;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.google.common.io.Files;
-import com.module.parser.entity.launch.Box;
-import com.module.parser.entity.launch.Register;
-import com.module.parser.entity.launch.RegisterOut;
-import com.module.parser.entity.launch.VesselStruct;
+import com.module.parser.entity.launch.*;
 import com.module.parser.entity.order.CTOSRESULT;
 import com.module.parser.entity.order.Response;
 import com.module.parser.entity.result.*;
@@ -131,20 +128,20 @@ class EntityApplicationTests {
 
     @Test
     void testFastJSONFormat(){
-        RegisterOut dym = new RegisterOut("DYW", "123+=&^#");
-        String result = JSON.toJSONString(dym, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
+        Login login = new Login("userName", "password", "123", "clientIp", "123");
+        String result = JSON.toJSONString(login, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
         System.out.println(result);
         String finalResult = result.replaceAll("\'(\\w+)\'(\\s*:\\s*)", "$1$2");
-        System.out.println(finalResult.substring(1, finalResult.lastIndexOf("}")));
+        System.out.println(finalResult.substring(1, finalResult.lastIndexOf("}")).replaceAll("\\s*", ""));
 
-        String json1 = "{\'name\':\'value\', \'user\':\'userValue#$2i%^#\'}";
-        String t = json1.replaceAll("\'(\\w+)\'(\\s*:\\s*)", "$1$2");
-        System.out.println(t);
+//        String json1 = "{\'name\':\'value\', \'user\':\'userValue#$2i%^#\'}";
+//        String t = json1.replaceAll("\'(\\w+)\'(\\s*:\\s*)", "$1$2");
+//        System.out.println(t);
     }
 
     @Test
     void testRegex(){
-        String xmlStr = Response.SM001002;
+        String xmlStr = Response.OP004042;
         String regex = "<CTOSRESULT>(.*?)</CTOSRESULT>";
         Pattern compile = Pattern.compile(regex);
         Matcher matcher = compile.matcher(xmlStr);

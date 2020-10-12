@@ -83,7 +83,7 @@ public class Navigator {
         FindBoxOrder findBoxOrder = new FindBoxOrder("111", "1", "1", "ticket_id");
         String result1 = JSON.toJSONString(findBoxOrder1, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
         String result2 = result1.replaceAll("\'(\\w+)\'(\\s*:\\s*)", "$1$2");
-        String result3 = result2.substring(1, result2.lastIndexOf("}")).trim();
+        String result3 = result2.substring(1, result2.lastIndexOf("}")).replaceAll("\\s*", "");
         System.out.println("------------final input string----------" + result3);
 
         FindBoxOrderResult returnResult = null;
@@ -431,12 +431,13 @@ public class Navigator {
         String result3 = result2.substring(1, result2.lastIndexOf("}")).replaceAll("\\s*", "");
         System.out.println("------------final input string----------" + result3);
 
-        ShipmentUpClient shipmentUpClient = new ShipmentUpClient();
-        ShipmentUpClient.QueryShipUpClient queryShipUpClient = shipmentUpClient.new QueryShipUpClient();
-
         QueryShipUpResult returnResult = null;
-//        String returnStr = queryShipUpClient.accessQueryShipUp(result3);
-        String returnStr = CTOSRESULT.OP004042;
+        String returnStr0 = httpClient.accessQueryShipUp(result3);
+        System.out.println("-------------+++++++++++++--------------" + returnStr0);
+        String returnStr = getCTOSResultString(returnStr0);
+        System.out.println("------------final output string----------" + returnStr);
+
+//        String returnStr = CTOSRESULT.OP004042;
         try{
             StringReader reader = new StringReader(returnStr);
             JAXBContext context = JAXBContext.newInstance(QueryShipUpResult.class);
@@ -445,8 +446,9 @@ public class Navigator {
         } catch (Exception e){
             e.printStackTrace();
         }
-
-        return JSON.toJSONString(returnResult);
+        String jsonString = JSON.toJSONString(returnResult);
+        System.out.println(jsonString);
+        return jsonString;
     }
 
     /** 注册 */
@@ -464,7 +466,8 @@ public class Navigator {
 //        Register register = new Register("DYW", "123456", "1");
         String result1 = JSON.toJSONString(register1, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
         String result2 = result1.replaceAll("\'(\\w+)\'(\\s*:\\s*)", "$1$2");
-        String result3 = result2.substring(1, result2.lastIndexOf("}")).trim();
+        String result3 = result2.substring(1, result2.lastIndexOf("}")).replaceAll("\\s*", "");
+        System.out.println("------------final input string----------" + result3);
 
         RegisterResult returnResult = null;
         String returnStr0 = httpClient.accessRegister(result3);
@@ -500,10 +503,15 @@ public class Navigator {
 //        RegisterOut registerOut = new RegisterOut("DYW", "ticketId");
         String result1 = JSON.toJSONString(registerOut1, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
         String result2 = result1.replaceAll("\'(\\w+)\'(\\s*:\\s*)", "$1$2");
-        String result3 = result2.substring(1, result2.lastIndexOf("}")).trim();
+        String result3 = result2.substring(1, result2.lastIndexOf("}")).replaceAll("\\s*", "");
+        System.out.println("------------final input string----------" + result3);
 
         RegisterOutResult returnResult = null;
-        String returnStr = httpClient.accessRegisterOut(result3);
+        String returnStr0 = httpClient.accessRegisterOut(result3);
+        System.out.println("-------------+++++++++++++" + returnStr0);
+        String returnStr = getCTOSResultString(returnStr0);
+        System.out.println(returnStr);
+
 //        String returnStr = CTOSRESULT.SM001002;
         try{
             StringReader reader = new StringReader(returnStr);
@@ -527,11 +535,11 @@ public class Navigator {
 
     @ResponseBody
     @RequestMapping("getShipmentDownRegResult")
-    public String getShipmentDownRegResult(ShipmentDownReg shipmentDownReg1){
+    public String getShipmentDownRegResult(@RequestBody ShipmentDownReg shipmentDownReg1){
         ShipmentDownReg shipmentDownReg = new ShipmentDownReg();
-        String result1 = JSON.toJSONString(shipmentDownReg, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
+        String result1 = JSON.toJSONString(shipmentDownReg1, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
         String result2 = result1.replaceAll("\'(\\w+)\'(\\s*:\\s*)", "$1$2");
-        String result3 = result2.substring(1, result2.lastIndexOf("}")).trim();
+        String result3 = result2.substring(1, result2.lastIndexOf("}")).replaceAll("\\s*", "");
 
         ShipmentDownRegResult returnResult = null;
 //        String returnStr = httpClient.accessShipmentDownReg(result3);
@@ -558,11 +566,11 @@ public class Navigator {
 
     @ResponseBody
     @RequestMapping("getShipmentTaskInitResult")
-    public String getShipmentTaskInitResult(ShipmentTaskInit shipmentTaskInit1){
+    public String getShipmentTaskInitResult(@RequestBody ShipmentTaskInit shipmentTaskInit1){
         ShipmentTaskInit shipmentTaskInit = new ShipmentTaskInit();
-        String result1 = JSON.toJSONString(shipmentTaskInit, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
+        String result1 = JSON.toJSONString(shipmentTaskInit1, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
         String result2 = result1.replaceAll("\'(\\w+)\'(\\s*:\\s*)", "$1$2");
-        String result3 = result2.substring(1, result2.lastIndexOf("}")).trim();
+        String result3 = result2.substring(1, result2.lastIndexOf("}")).replaceAll("\\s*", "");
 
         ShipmentTaskInitResult returnResult = null;
 //        String returnStr = httpClient.accessShipmentTaskInit(result3);
@@ -589,11 +597,11 @@ public class Navigator {
 
     @ResponseBody
     @RequestMapping("getShipmentTaskQuitResult")
-    public String getShipmentTaskQuitResult(ShipmentTaskQuit shipmentTaskQuit1){
+    public String getShipmentTaskQuitResult(@RequestBody ShipmentTaskQuit shipmentTaskQuit1){
         ShipmentTaskQuit shipmentTaskQuit = new ShipmentTaskQuit();
-        String result1 = JSON.toJSONString(shipmentTaskQuit, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
+        String result1 = JSON.toJSONString(shipmentTaskQuit1, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
         String result2 = result1.replaceAll("\'(\\w+)\'(\\s*:\\s*)", "$1$2");
-        String result3 = result2.substring(1, result2.lastIndexOf("}")).trim();
+        String result3 = result2.substring(1, result2.lastIndexOf("}")).replaceAll("\\s*", "");
 
         ShipmentTaskQuitResult returnResult = null;
 //        String returnStr = httpClient.accessShipmentTaskQuit(result3);
@@ -620,11 +628,11 @@ public class Navigator {
     /** 确认卸船 */
     @ResponseBody
     @RequestMapping("getShipmentUpRegResult")
-    public String getShipmentUpRegResult(ShipmentUpReg shipmentUpReg1){
-        ShipmentUpReg shipmentUpReg = new ShipmentUpReg("1", "1", "1", "1", "1", "1", "1", "DYW", "1", "1", "1");
-        String result1 = JSON.toJSONString(shipmentUpReg, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
+    public String getShipmentUpRegResult(@RequestBody ShipmentUpReg shipmentUpReg1){
+//        ShipmentUpReg shipmentUpReg = new ShipmentUpReg("1", "1", "1", "1", "1", "1", "1", "DYW", "1", "1", "1");
+        String result1 = JSON.toJSONString(shipmentUpReg1, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
         String result2 = result1.replaceAll("\'(\\w+)\'(\\s*:\\s*)", "$1$2");
-        String result3 = result2.substring(1, result2.lastIndexOf("}")).trim();
+        String result3 = result2.substring(1, result2.lastIndexOf("}")).replaceAll("\\s*", "");
 
         ShipmentUpClient shipmentUpClient = new ShipmentUpClient();
         ShipmentUpClient.ShipmentUpRegClient shipmentUpRegClient = shipmentUpClient.new ShipmentUpRegClient();
@@ -645,7 +653,7 @@ public class Navigator {
 
     }
 
-    /** 指定船期岸桥下的作业指令 OP004040 */
+    /** 指定船期岸桥下的作业量统计 OP004040 */
     @ResponseBody
     @RequestMapping("getShipWorkLoadResultFormat")
     public List<FieldReflect.Format> getShipWorkLoadResultFormat(){
@@ -655,15 +663,20 @@ public class Navigator {
 
     @ResponseBody
     @RequestMapping("getShipWorkLoadResult")
-    public String getShipWorkLoadResult(ShipWorkLoad shipWorkLoad1){
-        ShipWorkLoad shipmentUpReg = new ShipWorkLoad("velAliase", "ticket_id");
-        String result1 = JSON.toJSONString(shipmentUpReg, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
+    public String getShipWorkLoadResult(@RequestBody ShipWorkLoad shipWorkLoad1){
+//        ShipWorkLoad shipmentUpReg = new ShipWorkLoad("velAliase", "ticket_id");
+        String result1 = JSON.toJSONString(shipWorkLoad1, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
         String result2 = result1.replaceAll("\'(\\w+)\'(\\s*:\\s*)", "$1$2");
-        String result3 = result2.substring(1, result2.lastIndexOf("}")).trim();
+        String result3 = result2.substring(1, result2.lastIndexOf("}")).replaceAll("\\s*", "");
+        System.out.println("------------final input string----------" + result3);
 
         ShipWorkLoadResult returnResult = null;
-//        String returnStr = httpClient.accessShipWorkLoad(result3);
-        String returnStr = CTOSRESULT.OP004040;
+        String returnStr0 = httpClient.accessShipWorkLoad(result3);
+        System.out.println("-------------+++++++++++++--------------" + returnStr0);
+        String returnStr = getCTOSResultString(returnStr0);
+        System.out.println("------------final output string----------" + returnStr);
+
+//        String returnStr = CTOSRESULT.OP004040;
         try{
             StringReader reader = new StringReader(returnStr);
             JAXBContext context = JAXBContext.newInstance(ShipWorkLoadResult.class);
@@ -672,9 +685,9 @@ public class Navigator {
         } catch (Exception e){
             e.printStackTrace();
         }
-
+        String jsonString = JSON.toJSONString(returnResult);
+        System.out.println(jsonString);
         return JSON.toJSONString(returnResult);
-
     }
 
     /** 卸船指令清单*/
@@ -687,15 +700,20 @@ public class Navigator {
 
     @ResponseBody
     @RequestMapping("getUnloadOrderListResult")
-    public String getUnloadOrderListResult(UnloadOrderList unloadOrderList1){
-        UnloadOrderList unloadOrderList = new UnloadOrderList("velAliase", "number", "ticket_id");
-        String result1 = JSON.toJSONString(unloadOrderList, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
+    public String getUnloadOrderListResult(@RequestBody UnloadOrderList unloadOrderList1){
+//        UnloadOrderList unloadOrderList = new UnloadOrderList("velAliase", "number", "ticket_id");
+        String result1 = JSON.toJSONString(unloadOrderList1, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
         String result2 = result1.replaceAll("\'(\\w+)\'(\\s*:\\s*)", "$1$2");
-        String result3 = result2.substring(1, result2.lastIndexOf("}")).trim();
+        String result3 = result2.substring(1, result2.lastIndexOf("}")).replaceAll("\\s*", "");
+        System.out.println("------------final input string----------" + result3);
 
         UnloadOrderListResult returnResult = null;
-//        String returnStr = httpClient.accessUnloadOrderList(result3);
-        String returnStr = CTOSRESULT.OP004041;
+        String returnStr0 = httpClient.accessUnloadOrderList(result3);
+        System.out.println("-------------+++++++++++++--------------" + returnStr0);
+        String returnStr = getCTOSResultString(returnStr0);
+        System.out.println("------------final output string----------" + returnStr);
+
+//        String returnStr = CTOSRESULT.OP004041;
         try{
             StringReader reader = new StringReader(returnStr);
             JAXBContext context = JAXBContext.newInstance(UnloadOrderListResult.class);
@@ -704,9 +722,9 @@ public class Navigator {
         } catch (Exception e){
             e.printStackTrace();
         }
-
-        return JSON.toJSONString(returnResult);
-
+        String jsonString = JSON.toJSONString(returnResult);
+        System.out.println(jsonString);
+        return jsonString;
     }
 
     /** 根据箱号索卸船箱指令信息 */
@@ -719,11 +737,11 @@ public class Navigator {
 
     @ResponseBody
     @RequestMapping("getUnloadOrderResult")
-    public String getUnloadOrderResult(UnloadOrder unloadOrder1){
+    public String getUnloadOrderResult(@RequestBody UnloadOrder unloadOrder1){
 //        UnloadOrder unloadOrder = new UnloadOrder("velAliase", "number", "ticket_id");
         String result1 = JSON.toJSONString(unloadOrder1, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
         String result2 = result1.replaceAll("\'(\\w+)\'(\\s*:\\s*)", "$1$2");
-        String result3 = result2.substring(1, result2.lastIndexOf("}")).trim().replaceAll("\\s*", "");
+        String result3 = result2.substring(1, result2.lastIndexOf("}")).replaceAll("\\s*", "");
         System.out.println("------------final input string----------" + result3);
 
         UnloadOrderResult returnResult = null;
@@ -756,11 +774,11 @@ public class Navigator {
 
     @ResponseBody
     @RequestMapping("getUpdateDamageBoxResult")
-    public String getUpdateDamageBoxResult(UpdateDamageBox updateDamageBox1){
+    public String getUpdateDamageBoxResult(@RequestBody UpdateDamageBox updateDamageBox1){
         UpdateDamageBox updateDamageBox = new UpdateDamageBox("containerId", "tableParams", "ticket_id", "damageCode", "damageEmemo");
         String result1 = JSON.toJSONString(updateDamageBox, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
         String result2 = result1.replaceAll("\'(\\w+)\'(\\s*:\\s*)", "$1$2");
-        String result3 = result2.substring(1, result2.lastIndexOf("}")).trim();
+        String result3 = result2.substring(1, result2.lastIndexOf("}")).replaceAll("\\s*", "");
 
         UpdateDamageBoxResult returnResult = null;
 //        String returnStr = httpClient.accessUpdateDamageBox(result3);

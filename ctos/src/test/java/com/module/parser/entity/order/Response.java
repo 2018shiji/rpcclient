@@ -34,4 +34,19 @@ public class Response {
                     "</SM001002Response>" +
                     "</soap:Body>" +
                     "</soap:Envelope>";
+
+    public static final String OP004042 =
+            "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+                    "<soap:Envelope " +
+                    "xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" " +
+                    "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
+                    "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+                    "<soap:Body>" +
+                    "<OP004042Response xmlns=\"http://tempuri.org/\">" +
+                    "<OP004042Result>" +
+                    "<CTOSRESULT><RETURNINFO><ERRORCODE>0</ERRORCODE><ERRORMSG>success</ERRORMSG></RETURNINFO></CTOSRESULT>" +
+                    "</OP004042Result>" +
+                    "</OP004042Response>" +
+                    "</soap:Body>" +
+                    "</soap:Envelope>";
 }

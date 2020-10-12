@@ -7,12 +7,11 @@ import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 public class Logout {
     @JSONField(name = "USER_ID", label = "userID")
     private String userId;
     @JSONField(name = "TERMINALNO", label = "terminalNo")
-    private int terminalNo;
+    private String terminalNo;
     @JSONField(name = "TICKET_ID", label = "ticketID")
     private String ticketId;
 }

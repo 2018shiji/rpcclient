@@ -8,7 +8,6 @@ import lombok.ToString;
 
 @Data
 @ToString
-@NoArgsConstructor
 @AllArgsConstructor
 public class Login {
     @JSONField(name = "USERNAME", label = "userName")
@@ -17,8 +16,10 @@ public class Login {
     private String password;
     /** 无线终端编号 */
     @JSONField(name = "TERMINALNO", label = "terminalNo")
-    private int terminalNo;
-    @JSONField(name = "CLIENT_ID", label = "clientIP")
+    private String terminalNo;
+    @JSONField(name = "CLIENTIP", label = "clientIP")
     private String clientIp;
+    @JSONField(name = "TICKET_ID", label = "ticket_id")
+    private String ticket_id;
 
 }
