@@ -21,13 +21,13 @@ public class GetContractorResult {
     @XmlType(name = "SM003006")
     public static class DataTable{
         @XmlElement(name = "CONTRACTORCNAME", required = true)
-        @VueField(label = "contractorCName")
+        @VueField(label = "承包商中文名")
         private String contractorCName;
         @XmlElement(name = "CONTRACTORENAME")
-        @VueField(label = "contractorEName")
+        @VueField(label = "承包商英文名")
         private String contractorEName;
         @XmlElement(name = "CONTRACTORCODE", required = true)
-        @VueField(label = "contractorCode")
+        @VueField(label = "承包商代码")
         private String contractorCode;
         @XmlElement(name = "TICKET_ID")
         private String ticket_Id;

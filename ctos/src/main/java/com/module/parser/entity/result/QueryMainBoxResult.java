@@ -28,11 +28,11 @@ public class QueryMainBoxResult {
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "CM_CONTAINER")
     public static class Container{
-        @VueField(label = "container", sortable = true)
         @XmlElement(name = "CONTAINERNO", required = true)
+        @VueField(label = "主箱箱号", sortable = true)
         private String containerNo;
-        @VueField(label = "containerId", sortable = true)
         @XmlElement(name = "CONTAINERID", required = true)
+        @VueField(label = "主箱ID", sortable = true)
         private String containerId;
     }
 }

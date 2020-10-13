@@ -29,10 +29,10 @@ public class GetRoleUserResult {
     @XmlType(name = "USERINFO")
     public static class UserInfo{
         @XmlElement(name = "US_LOGID", required = true)
-        @VueField(label = "us_logId")
+        @VueField(label = "登录名")
         private String us_logId;
         @XmlElement(name = "US_TYPE", required = true)
-        @VueField(label = "us_type")
+        @VueField(label = "用户类型")
         private String us_type;
     }
 }

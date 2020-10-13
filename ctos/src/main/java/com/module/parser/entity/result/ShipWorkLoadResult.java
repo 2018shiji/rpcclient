@@ -21,19 +21,19 @@ public class ShipWorkLoadResult {
     @XmlType(name = "OP004040")
     public static class DataTable{
         @XmlElement(name = "WORKPOINTNO")
-        @VueField(label = "workPointNo", sortable = true)
+        @VueField(label = "工作点", sortable = true)
         private String workPointNo;
         @XmlElement(name = "VELALIASE")
-        @VueField(label = "velAliase")
+        @VueField(label = "船别名")
         private String velAliase;
         @XmlElement(name = "ISCOMPLETE")
-        @VueField(label = "isComplete")
+        @VueField(label = "是否完成")
         private String isComplete;
         @XmlElement(name = "QUEUETYPE")
-        @VueField(label = "queueType")
+        @VueField(label = "装卸类型")
         private String queueType;
         @XmlElement(name = "COUNTSUM")
-        @VueField(label = "countSum", sortable = true)
+        @VueField(label = "数量", sortable = true)
         private String countSum;
     }
 

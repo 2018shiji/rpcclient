@@ -203,12 +203,12 @@ public class Navigator {
         System.out.println("------------final input string----------" + result3);
 
         GetContractorResult returnResult = null;
-        String returnStr0 = httpClient.accessGetContractor(result3);
-        System.out.println("-------------+++++++++++++--------------" + returnStr0);
-        String returnStr = getCTOSResultString(returnStr0);
-        System.out.println("------------final output string----------" + returnStr);
+//        String returnStr0 = httpClient.accessGetContractor(result3);
+//        System.out.println("-------------+++++++++++++--------------" + returnStr0);
+//        String returnStr = getCTOSResultString(returnStr0);
+//        System.out.println("------------final output string----------" + returnStr);
 
-//        String returnStr = CTOSRESULT.SM003006;
+        String returnStr = CTOSRESULT.SM003006;
         try {
             StringReader reader = new StringReader(returnStr);
             JAXBContext context = JAXBContext.newInstance(GetContractorResult.class);
@@ -317,12 +317,12 @@ public class Navigator {
         System.out.println("------------final input string----------" + result3);
 
         LoginResult returnResult = null;
-        String returnStr0 = httpClient.accessLogin(result3);
-        System.out.println("-------------+++++++++++++--------------" + returnStr0);
-        String returnStr = getCTOSResultString(returnStr0);
-        System.out.println("------------final output string----------" + returnStr);
+//        String returnStr0 = httpClient.accessLogin(result3);
+//        System.out.println("-------------+++++++++++++--------------" + returnStr0);
+//        String returnStr = getCTOSResultString(returnStr0);
+//        System.out.println("------------final output string----------" + returnStr);
 
-//        String returnStr = CTOSRESULT.OP007001;
+        String returnStr = CTOSRESULT.OP007001;
         try {
             StringReader reader = new StringReader(returnStr);
             JAXBContext context = JAXBContext.newInstance(LoginResult.class);
@@ -470,11 +470,11 @@ public class Navigator {
         System.out.println("------------final input string----------" + result3);
 
         RegisterResult returnResult = null;
-        String returnStr0 = httpClient.accessRegister(result3);
-        System.out.println("-------------+++++++++++++" + returnStr0);
-        String returnStr = getCTOSResultString(returnStr0);
-        System.out.println(returnStr);
-//        String returnStr = CTOSRESULT.SM001001;
+//        String returnStr0 = httpClient.accessRegister(result3);
+//        System.out.println("-------------+++++++++++++" + returnStr0);
+//        String returnStr = getCTOSResultString(returnStr0);
+//        System.out.println(returnStr);
+        String returnStr = CTOSRESULT.SM001001;
         try {
             StringReader reader = new StringReader(returnStr);
             JAXBContext context = JAXBContext.newInstance(RegisterResult.class);

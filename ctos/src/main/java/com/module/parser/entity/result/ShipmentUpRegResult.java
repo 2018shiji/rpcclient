@@ -31,10 +31,10 @@ public class ShipmentUpRegResult {
     @XmlType(name = "WI_DEVICEOPTIMELINES")
     public static class DeviceOpTimeLines{
         @XmlElement(name = "DEVICEOPTIMELINESID", required = true)
-        @VueField(label = "deviceOpTimeLineSid")
+        @VueField(label = "MOVE-ID")
         private String deviceOpTimeLineSid;
         @XmlElement(name = "FINISHCOUNTS", required = true)
-        @VueField(label = "finishCounts", sortable = true)
+        @VueField(label = "确认的指令数量", sortable = true)
         private String finishCounts;
     }
 
@@ -43,13 +43,13 @@ public class ShipmentUpRegResult {
     @XmlType(name = "ERRINFO")
     public static class ErrInfo{
         @XmlElement(name = "CONTAINERNO")
-        @VueField(label = "containerNo", sortable = true)
+        @VueField(label = "箱号", sortable = true)
         private String containerNo;
         @XmlElement(name = "ERRORCODE")
-        @VueField(label = "errorCode")
+        @VueField(label = "错误代码")
         private String errorCode;
         @XmlElement(name = "ERRMSG")
-        @VueField(label = "errMsg")
+        @VueField(label = "错误信息")
         private String errMsg;
     }
 }

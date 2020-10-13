@@ -29,10 +29,10 @@ public class ShipmentDownRegResult {
     @XmlType(name = "WI_DEVICEOPTIMELINES")
     public static class DeviceOpTimeLines{
         @XmlElement(name = "DEVICEOPTIMELINESID", required = true)
-        @VueField(label = "deviceOpTimeLineSid")
+        @VueField(label = "MOVE-ID")
         private String deviceOpTimeLineSid;
         @XmlElement(name = "FINISHCOUNTS", required = true)
-        @VueField(label = "finishCounts", sortable = true)
+        @VueField(label = "确认的指令数量", sortable = true)
         private String finishCounts;
     }
 }

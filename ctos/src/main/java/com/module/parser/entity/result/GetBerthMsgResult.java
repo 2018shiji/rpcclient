@@ -21,13 +21,13 @@ public class GetBerthMsgResult {
     @XmlType(name = "SM003007")
     public static class DataTable{
         @XmlElement(name = "ID")
-        @VueField(label = "id", sortable = true)
+        @VueField(label = "泊位id", sortable = true)
         private String id;
         @XmlElement(name = "BERTHGROUPCODE")
-        @VueField(label = "berthGroupCode")
+        @VueField(label = "泊位组")
         private String berthGroupCode;
         @XmlElement(name = "BERTHNO")
-        @VueField(label = "berthNo", sortable = true)
+        @VueField(label = "泊位编号", sortable = true)
         private String berthNo;
         @XmlElement(name = "TICKET_ID")
         private String ticket_Id;
