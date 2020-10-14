@@ -9,24 +9,26 @@ import java.util.List;
 @Data
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "CTOSRESULT")
-@XmlType(name = "CTOSRESULT", propOrder = {"returnInfo", "dataTable"})
+@XmlType(name = "CTOSRESULT", propOrder = {"returnInfo", "containers", "bindInfo", "imdgInfo"})
 public class FindBoxResult {
     @XmlElement(name = "RETURNINFO", required = true)
     private ReturnInfo returnInfo;
-    @XmlElement(name = "CM005001", required = true)
-    private List<DataTable> dataTable;
+    @XmlElement(name = "CM_CONTAINERS")
+    private List<Containers> containers;
+    @XmlElement(name = "CM_CONTAINERS_BINDINFO")
+    private List<ContainersBindInfo> bindInfo;
+    @XmlElement(name = "CM_CONTAINERIMDGINFO")
+    private List<ContainerImdgInfo> imdgInfo;
 
-    @Data
-    @XmlAccessorType(XmlAccessType.FIELD)
-    @XmlType(name = "CM005001", propOrder = {"containers", "bindInfo", "imdgInfo"})
-    public static class DataTable{
-        @XmlElement(name = "CM_CONTAINERS", required = true)
-        private Containers containers;
-        @XmlElement(name = "CM_CONTAINERS_BINDINFO")
-        private ContainersBindInfo bindInfo;
-        @XmlElement(name = "CM_CONTAINERIMDGINFO")
-        private ContainerImdgInfo imdgInfo;
-    }
+//    @XmlElement(name = "CM005001", required = true)
+//    private List<DataTable> dataTable;
+//
+//    @Data
+//    @XmlAccessorType(XmlAccessType.FIELD)
+//    @XmlType(name = "CM005001", propOrder = {"containers", "bindInfo", "imdgInfo"})
+//    public static class DataTable{
+//
+//    }
 
     @Data
     @XmlAccessorType(XmlAccessType.FIELD)

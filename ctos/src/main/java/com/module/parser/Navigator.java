@@ -110,8 +110,8 @@ public class Navigator {
     /** 根据箱号查找箱 CM005001 */
     @ResponseBody
     @RequestMapping("getBoxByNumResultFormat")
-    public List<FieldReflect.Format> getFindBoxResultFormat(){
-        List<FieldReflect.Format> fieldReflect = reflect.getFieldReflect(FindBoxResult.class);
+    public Map<String, List<FieldReflect.Format>> getFindBoxResultFormat(){
+        Map<String, List<FieldReflect.Format>> fieldReflect = reflect.getFieldReflect2(FindBoxResult.class);
         return fieldReflect;
     }
 
@@ -838,7 +838,6 @@ public class Navigator {
     @RequestMapping("getVesselStructResultFormat")
     public Map<String, List<FieldReflect.Format>> getVesselStructResultFormat(){
         Map<String, List<FieldReflect.Format>> fieldReflect = reflect.getFieldReflect2(VesselStructResult.class);
-//        List<FieldReflect.Format> fieldReflect = reflect.getFieldReflect(VesselStructResult.class);
         return fieldReflect;
     }
 
@@ -856,7 +855,7 @@ public class Navigator {
         String returnStr0 = httpClient.accessVesselStruct(result3);
         String returnStr = getCTOSResultString(returnStr0);
         System.out.println("------------final output string----------" + returnStr.length());
-        ResultFile.saveToFile(returnStr);
+//        ResultFile.saveToFile(returnStr);
         try{
 //            File file = new File("E:\\result\\vesselStruct.txt");
 //            String returnStr = Files.asCharSource(file, StandardCharsets.UTF_8).read();
