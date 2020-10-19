@@ -196,7 +196,7 @@ public class Asmx8HttpClient {
                 "      <tem:SM001001>\n" +
                 "         <!--Optional:-->\n" +
                 "         \n" +
-                "      <tem:paras>CLIENTIP:'1',PASSWORD:'123456',USER_ID:'DYW'</tem:paras></tem:SM001001>\n" +
+                "      <tem:paras>" + input + "</tem:paras></tem:SM001001>\n" +
                 "   </soap:Body>\n" +
                 "</soap:Envelope>";
         return dispatch(endpointURL, content, "SM001001");

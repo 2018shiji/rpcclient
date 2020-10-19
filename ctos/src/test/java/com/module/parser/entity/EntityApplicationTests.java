@@ -3,6 +3,7 @@ package com.module.parser.entity;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.google.common.io.Files;
+import com.module.parser.asmxclient.Asmx8HttpClient;
 import com.module.parser.entity.launch.*;
 import com.module.parser.entity.order.CTOSRESULT;
 import com.module.parser.entity.order.Response;
@@ -129,10 +130,12 @@ class EntityApplicationTests {
     @Test
     void testFastJSONFormat(){
         Login login = new Login("userName", "password", "123", "clientIp", "123");
-        String result = JSON.toJSONString(login, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
-        System.out.println(result);
-        String finalResult = result.replaceAll("\'(\\w+)\'(\\s*:\\s*)", "$1$2");
-        System.out.println(finalResult.substring(1, finalResult.lastIndexOf("}")).replaceAll("\\s*", ""));
+        String result1 = JSON.toJSONString(login, SerializerFeature.PrettyFormat, SerializerFeature.UseSingleQuotes);
+        System.out.println(result1);
+        String result2 = result1.replaceAll("\'(\\w+)\'(\\s*:\\s*)", "$1$2");
+        System.out.println(result2);
+        String result3 = result2.substring(1, result2.lastIndexOf("}")).replaceAll("\\s*", "");
+        System.out.println(result3);
 
 //        String json1 = "{\'name\':\'value\', \'user\':\'userValue#$2i%^#\'}";
 //        String t = json1.replaceAll("\'(\\w+)\'(\\s*:\\s*)", "$1$2");
@@ -222,4 +225,11 @@ class EntityApplicationTests {
         System.out.println(splitList.get(splitList.size()-2));
         System.out.println(splitList.get(splitList.size()-1));
     }
+
+    Asmx8HttpClient httpClient = new Asmx8HttpClient();
+    @Test
+    void testCase1(){
+        httpClient.accessRegister("test case1");
+    }
+
 }
