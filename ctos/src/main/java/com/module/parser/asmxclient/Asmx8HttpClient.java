@@ -19,21 +19,11 @@ import java.util.Map;
 
 
 public class Asmx8HttpClient {
-    public static String resultMap;
+
     public static CloseableHttpClient httpclient = HttpClients.createDefault();
     public static final String endpointURL = "http://10.128.13.27:6003/OCRService.asmx";
 
-    public String doSomeThingBefore(){
-
-        return resultMap;
-    }
-
-    public String doSomeThingAfter(){
-
-        return resultMap;
-    }
-
-    public synchronized String accessBox(String input){
+    public static synchronized String accessBox(String input){
         String content = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:tem=\"http://tempuri.org/\">\n" +
                 "   <soap:Header/>\n" +
                 "   <soap:Body>\n" +
@@ -46,7 +36,7 @@ public class Asmx8HttpClient {
         return dispatch(endpointURL, content, "OTS001008");
     }
 
-    public synchronized String accessFindBoxOrder(String input){
+    public static synchronized String accessFindBoxOrder(String input){
         String content = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:tem=\"http://tempuri.org/\">\n" +
                 "   <soap:Header/>\n" +
                 "   <soap:Body>\n" +
@@ -59,7 +49,7 @@ public class Asmx8HttpClient {
         return dispatch(endpointURL, content, "OP007032");
     }
 
-    public synchronized String accessShipmentUpReg(String input){
+    public static synchronized String accessShipmentUpReg(String input){
         String content = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:tem=\"http://tempuri.org/\">\n" +
                 "   <soap:Header/>\n" +
                 "   <soap:Body>\n" +
@@ -72,7 +62,7 @@ public class Asmx8HttpClient {
         return dispatch(endpointURL, content, "OP007036");
     }
 
-    public synchronized String accessQueryShipUp(String input){
+    public static synchronized String accessQueryShipUp(String input){
         String content = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:tem=\"http://tempuri.org/\">\n" +
                 "   <soap:Header/>\n" +
                 "   <soap:Body>\n" +
@@ -85,7 +75,7 @@ public class Asmx8HttpClient {
         return dispatch(endpointURL, content, "OP004042");
     }
 
-    public synchronized String accessFindBox(String input){
+    public static synchronized String accessFindBox(String input){
         String content = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:tem=\"http://tempuri.org/\">\n" +
                 "   <soap:Header/>\n" +
                 "   <soap:Body>\n" +
@@ -98,7 +88,7 @@ public class Asmx8HttpClient {
         return dispatch(endpointURL, content, "CM005001");
     }
 
-    public synchronized String accessGetBerthMsg(String input){
+    public static synchronized String accessGetBerthMsg(String input){
         String content = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:tem=\"http://tempuri.org/\">\n" +
                 "   <soap:Header/>\n" +
                 "   <soap:Body>\n" +
@@ -111,7 +101,7 @@ public class Asmx8HttpClient {
         return dispatch(endpointURL, content, "SM003007");
     }
 
-    public synchronized String accessGetContractor(String input){
+    public static synchronized String accessGetContractor(String input){
         String content = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:tem=\"http://tempuri.org/\">\n" +
                 "   <soap:Header/>\n" +
                 "   <soap:Body>\n" +
@@ -124,7 +114,7 @@ public class Asmx8HttpClient {
         return dispatch(endpointURL, content, "SM003006");
     }
 
-    public synchronized String accessGetRoleUser(String input){
+    public static synchronized String accessGetRoleUser(String input){
         String content = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:tem=\"http://tempuri.org/\">\n" +
                 "   <soap:Header/>\n" +
                 "   <soap:Body>\n" +
@@ -137,7 +127,7 @@ public class Asmx8HttpClient {
         return dispatch(endpointURL, content, "SM001010");
     }
 
-    public synchronized String accessGetWorkOrderList(String input){
+    public static synchronized String accessGetWorkOrderList(String input){
         String content = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:tem=\"http://tempuri.org/\">\n" +
                 "   <soap:Header/>\n" +
                 "   <soap:Body>\n" +
@@ -150,20 +140,20 @@ public class Asmx8HttpClient {
         return dispatch(endpointURL, content, "OP004039");
     }
 
-    public synchronized String accessLogin(String input) {
+    public static synchronized String accessLogin(String input) {
         String content = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:tem=\"http://tempuri.org/\">\n" +
                 "   <soap:Header/>\n" +
                 "   <soap:Body>\n" +
                 "      <tem:OP007001>\n" +
                 "         <!--Optional:-->\n" +
                 "         \n" +
-                "      <tem:paras>CLIENTIP:'1',PASSWORD:'123456',USERNAME:'DYW',TERMINALNO:'1',TICKET_ID:'zkIX5VnobHrR9KTFSI8orJn5rKiRsd5lPmqbxDxUxV8Oy4LQF9GIMoCciV1PAwwthKA06337mvc6NsY1uE518s+wVCZ+jYnaOimLlhRSTNW1Z/d9ZXLcpdVVRYOrBQMoKMNZFd9V89E/zKF7nUITydgPFuPMyepZJZX249ZuIpn7IN0w1fgpndTlMDWjudi9n31ot7Sk52BzeC4PPVtyFmPG4xbttNhElnlQLrOb0Ws='</tem:paras></tem:OP007001>\n" +
+                "      <tem:paras>" + input + "</tem:paras></tem:OP007001>\n" +
                 "   </soap:Body>\n" +
                 "</soap:Envelope>";
         return dispatch(endpointURL, content, "OP007001");
     }
 
-    public synchronized String accessLogout(String input) {
+    public static synchronized String accessLogout(String input) {
         String content = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:tem=\"http://tempuri.org/\">\n" +
                 "   <soap:Header/>\n" +
                 "   <soap:Body>\n" +
@@ -176,7 +166,7 @@ public class Asmx8HttpClient {
         return dispatch(endpointURL, content, "OP007002");
     }
 
-    public synchronized String accessQueryMainBox(String input) {
+    public static synchronized String accessQueryMainBox(String input) {
         String content = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:tem=\"http://tempuri.org/\">\n" +
                 "   <soap:Header/>\n" +
                 "   <soap:Body>\n" +
@@ -189,7 +179,7 @@ public class Asmx8HttpClient {
         return dispatch(endpointURL, content, "CM005009");
     }
 
-    public synchronized String accessRegister(String input){
+    public static synchronized String accessRegister(String input){
         String content = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:tem=\"http://tempuri.org/\">\n" +
                 "   <soap:Header/>\n" +
                 "   <soap:Body>\n" +
@@ -202,7 +192,7 @@ public class Asmx8HttpClient {
         return dispatch(endpointURL, content, "SM001001");
     }
 
-    public synchronized String accessRegisterOut(String input){
+    public static synchronized String accessRegisterOut(String input){
 
         String content = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:tem=\"http://tempuri.org/\">\n" +
                 "   <soap:Header/>\n" +
@@ -210,14 +200,14 @@ public class Asmx8HttpClient {
                 "      <tem:SM001002>\n" +
                 "         <!--Optional:-->\n" +
                 "         \n" +
-                "      <tem:paras>TICKET_ID:'zkIX5VnobHrR9KTFSI8orJn5rKiRsd5lPmqbxDxUxV8Oy4LQF9GIMoCciV1PAwwthKA06337mvc6NsY1uE518s+wVCZ+jYnaOimLlhRSTNW1Z/d9ZXLcpdVVRYOrBQMoKMNZFd9V89E/zKF7nUITydgPFuPMyepZJZX249ZuIpn7IN0w1fgpndTlMDWjudi9n31ot7Sk52BzeC4PPVtyFmPG4xbttNhElnlQLrOb0Ws=',USER_ID:'DYW'</tem:paras></tem:SM001002>\n" +
+                "      <tem:paras>" + input + "</tem:paras></tem:SM001002>\n" +
                 "   </soap:Body>\n" +
                 "</soap:Envelope>";
         return dispatch(endpointURL, content, "SM001002");
 
     }
 
-    public synchronized String accessShipmentDownReg(String input){
+    public static synchronized String accessShipmentDownReg(String input){
 
         String content = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:tem=\"http://tempuri.org/\">\n" +
                 "   <soap:Header/>\n" +
@@ -232,7 +222,7 @@ public class Asmx8HttpClient {
 
     }
 
-    public synchronized String accessShipmentTaskInit(String input){
+    public static synchronized String accessShipmentTaskInit(String input){
 
         String content = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:tem=\"http://tempuri.org/\">\n" +
                 "   <soap:Header/>\n" +
@@ -247,7 +237,7 @@ public class Asmx8HttpClient {
 
     }
 
-    public synchronized String accessShipmentTaskQuit(String input){
+    public static synchronized String accessShipmentTaskQuit(String input){
 
         String content = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:tem=\"http://tempuri.org/\">\n" +
                 "   <soap:Header/>\n" +
@@ -262,7 +252,7 @@ public class Asmx8HttpClient {
 
     }
 
-    public synchronized String accessShipWorkLoad(String input){
+    public static synchronized String accessShipWorkLoad(String input){
 
         String content = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:tem=\"http://tempuri.org/\">\n" +
                 "   <soap:Header/>\n" +
@@ -277,7 +267,7 @@ public class Asmx8HttpClient {
 
     }
 
-    public synchronized String accessUnloadOrderList(String input){
+    public static synchronized String accessUnloadOrderList(String input){
 
         String content = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:tem=\"http://tempuri.org/\">\n" +
                 "   <soap:Header/>\n" +
@@ -292,7 +282,7 @@ public class Asmx8HttpClient {
 
     }
 
-    public synchronized String accessUnloadOrder(String input){
+    public static synchronized String accessUnloadOrder(String input){
 
         String content = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:tem=\"http://tempuri.org/\">\n" +
                 "   <soap:Header/>\n" +
@@ -307,7 +297,7 @@ public class Asmx8HttpClient {
 
     }
 
-    public synchronized String accessUpdateDamageBox(String input){
+    public static synchronized String accessUpdateDamageBox(String input){
 
         String content = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:tem=\"http://tempuri.org/\">\n" +
                 "   <soap:Header/>\n" +
@@ -322,7 +312,7 @@ public class Asmx8HttpClient {
 
     }
 
-    public synchronized String accessVesselSchedule(String input){
+    public static synchronized String accessVesselSchedule(String input){
         String content = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:tem=\"http://tempuri.org/\">\n" +
                 "   <soap:Header/>\n" +
                 "   <soap:Body>\n" +
@@ -335,7 +325,7 @@ public class Asmx8HttpClient {
         return dispatch(endpointURL, content, "VM002001");
     }
 
-    public synchronized String accessVesselStruct(String input){
+    public static synchronized String accessVesselStruct(String input){
         String content = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:tem=\"http://tempuri.org/\">\n" +
                 "   <soap:Header/>\n" +
                 "   <soap:Body>\n" +
@@ -348,7 +338,7 @@ public class Asmx8HttpClient {
         return dispatch(endpointURL, content, "OTS001006");
     }
 
-    public synchronized String accessDeShipment(String input){
+    public static synchronized String accessDeShipment(String input){
         String content = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:tem=\"http://tempuri.org/\">\n" +
                 "   <soap:Header/>\n" +
                 "   <soap:Body>\n" +
@@ -361,7 +351,7 @@ public class Asmx8HttpClient {
         return dispatch(endpointURL, content, "OP007031");
     }
 
-    public synchronized String accessUpdateBox(String input){
+    public static synchronized String accessUpdateBox(String input){
         String content = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:tem=\"http://tempuri.org/\">\n" +
                 "   <soap:Header/>\n" +
                 "   <soap:Body>\n" +
@@ -374,7 +364,7 @@ public class Asmx8HttpClient {
         return dispatch(endpointURL, content, "OP007095");
     }
 
-    public synchronized String accessUnLoad(String input){
+    public static synchronized String accessUnLoad(String input){
         String content = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:tem=\"http://tempuri.org/\">\n" +
                 "   <soap:Header/>\n" +
                 "   <soap:Body>\n" +
@@ -387,7 +377,7 @@ public class Asmx8HttpClient {
         return dispatch(endpointURL, content, "OP007037");
     }
 
-    public String dispatch(String endpointURL, String content, String order){
+    public static String dispatch(String endpointURL, String content, String order){
         String result = null;
         try{
             HttpPost httpPost = new HttpPost(endpointURL);

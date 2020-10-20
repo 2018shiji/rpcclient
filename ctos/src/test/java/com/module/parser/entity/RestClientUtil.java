@@ -1,7 +1,5 @@
 package com.module.parser.entity;
 
-import com.module.parser.entity.result.*;
-import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 

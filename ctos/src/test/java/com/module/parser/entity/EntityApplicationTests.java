@@ -4,12 +4,11 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.google.common.io.Files;
 import com.module.parser.asmxclient.Asmx8HttpClient;
-import com.module.parser.entity.launch.*;
+import com.module.parser.entity.request.*;
 import com.module.parser.entity.order.CTOSRESULT;
 import com.module.parser.entity.order.Response;
-import com.module.parser.entity.result.*;
+import com.module.parser.entity.response.*;
 import com.module.parser.reflect.FieldReflect;
-import lombok.ToString;
 import org.apache.cxf.endpoint.Client;
 import org.apache.cxf.jaxws.endpoint.dynamic.JaxWsDynamicClientFactory;
 import org.junit.jupiter.api.Test;
@@ -21,7 +20,6 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
-import java.io.IOException;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
@@ -207,13 +205,13 @@ class EntityApplicationTests {
 
     @Test
     void testFieldReflectFormat(){
-        List<FieldReflect.Format> fieldReflect = reflect.getFieldReflect(VesselStructResult.class);
+        List<FieldReflect.VueResponseFormat> fieldReflect = reflect.getRespFieldReflect(VesselStructResult.class);
         System.out.println(fieldReflect);
     }
 
     @Test
     void testFieldReflectMultiFormat() {
-        Map<String, List<FieldReflect.Format>> fieldReflect = reflect.getFieldReflect2(VesselStructResult.class);
+        Map<String, List<FieldReflect.VueResponseFormat>> fieldReflect = reflect.getMapRespFieldReflect(VesselStructResult.class);
         System.out.println(fieldReflect);
     }
 

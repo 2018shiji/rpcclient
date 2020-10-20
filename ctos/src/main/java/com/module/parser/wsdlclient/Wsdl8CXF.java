@@ -2,7 +2,7 @@ package com.module.parser.wsdlclient;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.module.parser.entity.launch.Login;
+import com.module.parser.entity.request.Login;
 import org.apache.cxf.endpoint.Client;
 import org.apache.cxf.jaxws.endpoint.dynamic.JaxWsDynamicClientFactory;
 
