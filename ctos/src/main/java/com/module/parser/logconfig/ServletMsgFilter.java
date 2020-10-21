@@ -20,7 +20,6 @@ public class ServletMsgFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        boolean tagged = false;
         HttpServletRequest request = (HttpServletRequest) servletRequest;
 
         String servletMsgId = request.getHeader(SERVLET_MSG_ID);

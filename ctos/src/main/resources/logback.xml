@@ -8,11 +8,16 @@
         </encoder>
     </appender>
 
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <!-- This is the kafkaAppender -->
+    <appender name="kafkaAppender" class="com.github.danielwegener.logback.kafka.KafkaAppender">
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%X{servlet-message-id}] [%thread] %-5level %logger - %msg%n</pattern>
+            <pattern>[-ctos- ]%d{yyyy-MM-dd HH:mm:ss} [%X{servlet-message-id}] [%thread] %-5level %logger - %msg%n</pattern>
             <outputPatternAsHeader>true</outputPatternAsHeader>
         </encoder>
+        <topic>topic_rpc_client</topic>
+        <keyingStrategy class="com.github.danielwegener.logback.kafka.keying.NoKeyKeyingStrategy" />
+        <deliveryStrategy class="com.github.danielwegener.logback.kafka.delivery.AsynchronousDeliveryStrategy" />
+
         <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
             <evaluator>
                 <expression>
@@ -24,23 +29,11 @@
             <OnMismatch>DENY</OnMismatch>
             <OnMatch>NEUTRAL</OnMatch>
         </filter>
-    </appender>
-
-    <!-- This is the kafkaAppender -->
-    <appender name="kafkaAppender" class="com.github.danielwegener.logback.kafka.KafkaAppender">
-        <encoder>
-            <pattern>[-ctos- ]%d{yyyy-MM-dd HH:mm:ss} [%X{servlet-message-id}] [%thread] %-5level %logger - %msg%n</pattern>
-            <outputPatternAsHeader>true</outputPatternAsHeader>
-        </encoder>
-        <topic>topic_rpc_client</topic>
-        <keyingStrategy class="com.github.danielwegener.logback.kafka.keying.NoKeyKeyingStrategy" />
-        <deliveryStrategy class="com.github.danielwegener.logback.kafka.delivery.AsynchronousDeliveryStrategy" />
-
         <!-- Optional parameter to use a fixed partition -->
         <!-- <partition>0</partition> -->
 
         <!-- Optional parameter to include log timestamps into the kafka message -->
-        <!-- <appendTimestamp>true</appendTimestamp> -->
+<!--         <appendTimestamp>true</appendTimestamp> -->
 
         <!-- each <producerConfig> translates to regular kafka-client config (format: key=value) -->
         <!-- producer configs are documented here: https://kafka.apache.org/documentation.html#newproducerconfigs -->
@@ -48,7 +41,7 @@
         <producerConfig>bootstrap.servers=192.168.21.128:9092</producerConfig>
 
         <!-- this is the fallback appender if kafka is not available. -->
-        <appender-ref ref="STDOUT" />
+        <appender-ref ref="CONSOLE" />
     </appender>
 
     <!--设置日志打印级别为INFO-->

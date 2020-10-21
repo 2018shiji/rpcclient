@@ -3,6 +3,8 @@ package com.module.parser.reflect;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.ToString;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.ParameterizedType;
@@ -11,6 +13,7 @@ import java.util.stream.Collectors;
 
 @Component
 public class FieldReflect {
+    Logger logger = LoggerFactory.getLogger(FieldReflect.class);
     static List<VueResponseFormat> vueResponseFormats;
 
     public List<VueResponseFormat> getRespFieldReflect(Class clazz){
@@ -22,6 +25,7 @@ public class FieldReflect {
             results.add("{key:'" + vueResponseFormats.get(i).key + "', label:'" + vueResponseFormats.get(i).label + "', field:'" + vueResponseFormats.get(i).key + "', sortable:'" + vueResponseFormats.get(i).sortable + "'}");
         }
         System.out.println(results);
+        logger.info(results.toString());
         return vueResponseFormats;
     }
 
