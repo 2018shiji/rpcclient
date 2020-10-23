@@ -22,9 +22,9 @@ import java.util.Map;
 
 
 public class Asmx8HttpClient {
-    static Logger logger = LoggerFactory.getLogger(Asmx8HttpClient.class);
-    public static CloseableHttpClient httpclient = HttpClients.createDefault();
-    public static final String endpointURL = "http://10.128.13.27:6003/OCRService.asmx";
+    private static final Logger logger = LoggerFactory.getLogger(Asmx8HttpClient.class);
+    private static final CloseableHttpClient httpclient = HttpClients.createDefault();
+    private static final String endpointURL = "http://10.128.13.27:6003/OCRService.asmx";
 
 
     public static synchronized String accessBox(String input){
