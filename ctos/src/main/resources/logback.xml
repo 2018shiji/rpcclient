@@ -11,7 +11,7 @@
     <!-- This is the kafkaAppender -->
     <appender name="kafkaAppender" class="com.github.danielwegener.logback.kafka.KafkaAppender">
         <encoder>
-            <pattern>[-ctos- ]%d{yyyy-MM-dd HH:mm:ss} [%X{servlet-message-id}] [%thread] %-5level %logger - %msg%n</pattern>
+            <pattern>[ctos][%d{yyyy-MM-dd HH:mm:ss}] [%X{servlet-message-id}] [%thread] [%-5level] [%logger] [msg]%msg%n</pattern>
             <outputPatternAsHeader>true</outputPatternAsHeader>
         </encoder>
         <topic>topic_rpc_client</topic>

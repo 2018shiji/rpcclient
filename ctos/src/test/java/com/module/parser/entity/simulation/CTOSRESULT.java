@@ -1,4 +1,4 @@
-package com.module.parser.entity.order;
+package com.module.parser.entity.simulation;
 
 public class CTOSRESULT {
     public static final String ERRORMSG1 = "<CTOSRESULT><RETURNINFO><ERRORCODE>-1</ERRORCODE><ERRORMSG> QCNO  can not be  null or empty </ERRORMSG></RETURNINFO></CTOSRESULT>";

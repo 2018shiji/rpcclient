@@ -1,4 +1,4 @@
-package com.module.parser.entity.order;
+package com.module.parser.entity.simulation;
 
 public class Response {
     public static final String[] header = {
