@@ -1,4 +1,4 @@
-package com.module.parser.logconfig;
+package com.module.parser.asmxclient;
 
 import org.slf4j.Logger;
 

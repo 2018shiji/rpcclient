@@ -32,11 +32,11 @@
             <version>28.2-jre</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/info.picocli/picocli -->
+        <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
         <dependency>
-            <groupId>info.picocli</groupId>
-            <artifactId>picocli</artifactId>
-            <version>4.3.2</version>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.10</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-exec -->
@@ -76,50 +76,12 @@
             <version>3.1.2</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.module.cpdetector</groupId>
-            <artifactId>main</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.powermock/powermock-module-junit4 -->
-        <dependency>
-            <groupId>org.powermock</groupId>
-            <artifactId>powermock-module-junit4</artifactId>
-            <version>2.0.7</version>
-            <scope>test</scope>
-        </dependency>
-
         <!-- https://mvnrepository.com/artifact/org.powermock/powermock-api-mockito2 -->
         <dependency>
             <groupId>org.powermock</groupId>
             <artifactId>powermock-api-mockito2</artifactId>
             <version>2.0.7</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.module.cpdetector</groupId>
-            <artifactId>ext_antlr</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.module.cpdetector</groupId>
-            <artifactId>ext_chardet</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.module.cpdetector</groupId>
-            <artifactId>ext_jargs</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.belerweb</groupId>
-            <artifactId>pinyin4j</artifactId>
-            <version>2.5.1</version>
+            <scope>compile</scope>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.glassfish.main.javaee-api/javax.jws -->
@@ -129,11 +91,10 @@
             <version>3.1.2.2</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/javax.xml.ws/jaxws-api -->
         <dependency>
-            <groupId>javax.xml.ws</groupId>
-            <artifactId>jaxws-api</artifactId>
-            <version>2.3.0</version>
+            <groupId>com.module</groupId>
+            <artifactId>servlettracer</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
         <dependency>
@@ -146,16 +107,6 @@
                     <artifactId>junit-vintage-engine</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>jakarta.xml.bind</groupId>
-            <artifactId>jakarta.xml.bind-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.powermock</groupId>
-            <artifactId>powermock-api-mockito2</artifactId>
-            <version>2.0.7</version>
-            <scope>compile</scope>
         </dependency>
     </dependencies>
 

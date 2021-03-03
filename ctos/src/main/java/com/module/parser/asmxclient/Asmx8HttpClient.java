@@ -1,9 +1,6 @@
 package com.module.parser.asmxclient;
 
 import com.google.common.io.CharStreams;
-import com.module.parser.logconfig.ConsoleLogRecorder;
-import org.apache.http.Header;
-import org.apache.http.NameValuePair;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
@@ -13,12 +10,9 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.RequestEntity;
 
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
-import java.util.Map;
 
 
 public class Asmx8HttpClient {
